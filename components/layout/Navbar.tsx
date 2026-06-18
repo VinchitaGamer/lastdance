@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -14,12 +14,12 @@ const links = [
 ];
 
 // Variantes para el contenedor del menú (animación de entrada/salida)
-const menuVariants = {
+const menuVariants: Variants = {
   closed: {
     opacity: 0,
     height: 0,
     transition: {
-      duraton: 0.3,
+      duration: 0.3,
       ease: "easeInOut",
       when: "afterChildren", // Espera a que los hijos se oculten
     },
@@ -37,7 +37,7 @@ const menuVariants = {
 };
 
 // Variantes para cada enlace individual
-const itemVariants = {
+const itemVariants: Variants = {
   closed: { x: -16, opacity: 0 },
   open: { x: 0, opacity: 1 },
 };
