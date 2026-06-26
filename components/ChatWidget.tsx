@@ -13,6 +13,7 @@ interface ChatMessage {
 export default function ChatWidget() {
     const [mounted, setMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const [messages, setMessages] = useState<ChatMessage[]>([
         { role: "assistant", text: "¡Hola! Soy SourBot, el asistente inteligente de SourDev. ¿En qué tipo de desarrollo web o automatización con agentes de IA estás interesado?" }
     ]);
@@ -54,48 +55,80 @@ export default function ChatWidget() {
     useEffect(() => {
         if (typeof window === "undefined") return;
 
-        const updateViewportHeight = () => {
+        const updateViewport = () => {
             const vv = window.visualViewport;
+            setIsMobile(window.innerWidth < 640);
             if (vv) {
                 document.documentElement.style.setProperty(
                     "--visual-viewport-height",
                     `${vv.height}px`
+                );
+                document.documentElement.style.setProperty(
+                    "--visual-viewport-top",
+                    `${vv.offsetTop}px`
                 );
             } else {
                 document.documentElement.style.setProperty(
                     "--visual-viewport-height",
                     `${window.innerHeight}px`
                 );
+                document.documentElement.style.setProperty(
+                    "--visual-viewport-top",
+                    `0px`
+                );
             }
         };
 
         const vv = window.visualViewport;
         if (vv) {
-            vv.addEventListener("resize", updateViewportHeight);
-            vv.addEventListener("scroll", updateViewportHeight);
+            vv.addEventListener("resize", updateViewport);
+            vv.addEventListener("scroll", updateViewport);
         }
-        window.addEventListener("resize", updateViewportHeight);
-        updateViewportHeight();
+        window.addEventListener("resize", updateViewport);
+        updateViewport();
 
         return () => {
             if (vv) {
-                vv.removeEventListener("resize", updateViewportHeight);
-                vv.removeEventListener("scroll", updateViewportHeight);
+                vv.removeEventListener("resize", updateViewport);
+                vv.removeEventListener("scroll", updateViewport);
             }
-            window.removeEventListener("resize", updateViewportHeight);
+            window.removeEventListener("resize", updateViewport);
         };
     }, []);
 
-    // Lock body scroll on mobile when chat is open
+    // Lock body scroll on mobile when chat is open & prevent window scroll shifts
     useEffect(() => {
         if (typeof document === "undefined") return;
-        if (isOpen && window.innerWidth < 640) {
+        
+        const isMobileDevice = window.innerWidth < 640;
+        if (!isMobileDevice) return;
+
+        let scrollPosition = 0;
+
+        if (isOpen) {
+            // Save current scroll position
+            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Set body fixed to prevent Safari scrolling layout viewport
             document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
+            document.body.style.position = "fixed";
+            document.body.style.top = `-${scrollPosition}px`;
+            document.body.style.width = "100%";
+            document.body.style.height = "100%";
+            document.documentElement.style.overflow = "hidden";
         }
+
         return () => {
+            // Restore styles
             document.body.style.overflow = "";
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.width = "";
+            document.body.style.height = "";
+            document.documentElement.style.overflow = "";
+            if (isOpen) {
+                window.scrollTo(0, scrollPosition);
+            }
         };
     }, [isOpen]);
 
@@ -225,7 +258,20 @@ export default function ChatWidget() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.85, y: 30 }}
                         transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="fixed inset-0 sm:inset-auto sm:right-6 sm:bottom-24 z-50 flex h-[var(--visual-viewport-height,100dvh)] sm:h-[500px] w-full sm:w-[400px] flex-col overflow-hidden rounded-none sm:rounded-2xl border-none sm:border sm:border-white/10 bg-zinc-950 sm:bg-zinc-950/95 shadow-2xl backdrop-blur-none sm:backdrop-blur-xl"
+                        className="fixed sm:inset-auto sm:right-6 sm:bottom-24 z-50 flex w-full sm:w-[400px] flex-col overflow-hidden rounded-none sm:rounded-2xl border-none sm:border sm:border-white/10 bg-zinc-950 sm:bg-zinc-950/95 shadow-2xl backdrop-blur-none sm:backdrop-blur-xl"
+                        style={
+                            isMobile
+                                ? {
+                                      top: "var(--visual-viewport-top, 0px)",
+                                      height: "var(--visual-viewport-height, 100dvh)",
+                                      bottom: "auto",
+                                      left: 0,
+                                      right: 0,
+                                  }
+                                : {
+                                      height: "500px",
+                                  }
+                        }
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3">
@@ -327,6 +373,12 @@ export default function ChatWidget() {
                                 onChange={(e) => setInputText(e.target.value)}
                                 onKeyDown={(e) => {
                                     if (e.key === "Enter") handleSendMessage();
+                                }}
+                                onFocus={() => {
+                                    setTimeout(() => {
+                                        window.scrollTo(0, 0);
+                                        document.body.scrollTop = 0;
+                                    }, 80);
                                 }}
                                 placeholder="Escribe tu mensaje..."
                                 className="flex-1 rounded-xl bg-black/40 border border-white/10 px-4 py-2.5 text-base sm:text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-yellow-400/50"
