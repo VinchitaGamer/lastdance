@@ -28,16 +28,14 @@ export default function ChatWidget() {
         if (process.env.NEXT_PUBLIC_CHAT_WS_URL) {
             return process.env.NEXT_PUBLIC_CHAT_WS_URL;
         }
-        // Fallback for local development
+        // Fallback for local development and production
         if (typeof window !== "undefined") {
-            const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-            // If website is on localhost:3000, bot is on localhost:3001
-            if (window.location.hostname === "localhost") {
+            if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
                 return "ws://localhost:3001/ws";
             }
-            return `${protocol}//${window.location.host}/ws`;
+            return "wss://bot.sourdev.app/ws";
         }
-        return "ws://localhost:3001/ws";
+        return "wss://bot.sourdev.app/ws";
     };
 
     // Hydration fix
@@ -244,7 +242,7 @@ export default function ChatWidget() {
                                                         src={
                                                             msg.media.startsWith("http") 
                                                                 ? msg.media 
-                                                                : `${process.env.NEXT_PUBLIC_CHAT_API_URL || "http://localhost:3001"}${msg.media}`
+                                                                : `${process.env.NEXT_PUBLIC_CHAT_API_URL || (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'http://localhost:3001' : 'https://bot.sourdev.app')}${msg.media}`
                                                         }
                                                         alt="Catálogo o información del bot"
                                                         className="w-full h-auto object-cover max-h-[160px]"
