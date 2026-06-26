@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -51,9 +52,15 @@ export function Navbar() {
         
         {/* Logo */}
         <Link href="/" className="group inline-flex items-center gap-3 z-50">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-yellow-400/40 bg-yellow-400/10 text-sm font-semibold tracking-[0.28em] text-yellow-300 transition group-hover:border-yellow-300/70 group-hover:bg-yellow-400/15">
-            S
-          </span>
+          <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-yellow-400/40 bg-yellow-400/5 flex items-center justify-center transition group-hover:border-yellow-300/70 group-hover:bg-yellow-400/15">
+            <Image
+              src="/favicon.ico"
+              alt="SOURDEV"
+              width={32}
+              height={32}
+              className="h-8 w-8 object-contain"
+            />
+          </div>
           <span className="flex flex-col leading-none">
             <span className="font-mono text-lg font-semibold tracking-[0.28em] text-zinc-50">
               SOURDEV
