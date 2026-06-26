@@ -37,7 +37,7 @@ Al generar componentes de interfaz de usuario, NUNCA utilices texto de relleno c
 ## 4. Página: Casos de Estudio (`/portafolio`)
 
 * **Titular:** "Resultados Reales a Velocidad Luz."
-* **Caso de Estudio 1 - Web de Cobranzas:** "Portal financiero para seguimiento de pagos, gestión de deuda y reportes en tiempo real."
+* **Caso de Estudio 1 - Sistema de Comandas:** "Plataforma web en tiempo real para optimizar la toma de pedidos, coordinación de cocina y métricas en restaurantes."
 * **Caso de Estudio 2 - Automatizaciones:** "Conexión de ventas, correos y facturación para reducir trabajo manual y acelerar operaciones."
 * **Caso de Estudio 3 - Chatbots IA:** "Asistente conversacional entrenado para responder clientes, calificar leads y escalar soporte."
 * **Caso de Estudio 4 - Páginas Web:** "Landing pages y sitios corporativos con estética premium, velocidad y enfoque en conversión."
@@ -49,8 +49,8 @@ Al generar componentes de interfaz de usuario, NUNCA utilices texto de relleno c
 
 ## 4.2 Vistas de Software (`/portafolio/software/[slug]`)
 
-* **Cobranzas:** "Sistema para seguimiento, control y visualización de pagos con enfoque financiero."
-* **Beneficios de Cobranzas:** "Control de cartera, alertas de vencimiento y visibilidad financiera."
+* **Comandas:** "Sistema digital en tiempo real para optimizar la toma y preparación de pedidos en restaurantes."
+* **Beneficios de Comandas:** "Toma de pedidos ágil, cocina coordinada y métricas administrativas."
 * **Automatizaciones:** "Flujos conectados para ventas, correos y facturación sin trabajo manual repetitivo."
 * **Beneficios de Automatizaciones:** "Menos tareas manuales, procesos conectados y mayor velocidad operativa."
 * **Chatbots IA:** "Interfaces conversacionales para atención, calificación de leads y soporte continuo."

@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, Bot, DatabaseZap, ScanSearch, Globe2 } from "lucide-react";
+import { ArrowRight, Bot, DatabaseZap, ScanSearch, Globe2, Utensils } from "lucide-react";
 
 const sections = [
   {
-    href: "/portafolio/software/cobranzas",
-    title: "Cobranzas",
-    text: "Sistema para seguimiento, control y visualización de pagos con enfoque financiero.",
-    icon: DatabaseZap,
+    href: "/portafolio/software/comandas",
+    title: "Comandas",
+    text: "Sistema digital en tiempo real para optimizar la toma y preparación de pedidos en restaurantes.",
+    icon: Utensils,
   },
   {
     href: "/portafolio/software/automatizaciones",

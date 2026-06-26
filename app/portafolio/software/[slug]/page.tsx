@@ -16,64 +16,125 @@ import {
   ShieldCheck,
   ScanSearch,
   Workflow,
+  Utensils,
 } from "lucide-react";
 import { notFound } from "next/navigation";
 
 const softwareCases = {
-  cobranzas: {
-    title: "Web de Cobranzas",
-    description: "Sistema para seguimiento de cartera, control de pagos y reportes financieros con prioridad operativa.",
+  comandas: {
+    title: "Sistema de Comandas",
+    description: "Plataforma web en tiempo real para digitalizar la toma de pedidos, optimizar el flujo en cocina y centralizar métricas administrativas.",
     overview:
-      "Pensado para centralizar cartera, reducir fricción operativa y mostrar el estado real de cobranza en un solo lugar.",
+      "Diseñado para eliminar el papel y los tiempos muertos en restaurantes, conectando de forma instantánea a meseros, cocina y administración con alertas acústicas e interfaces optimizadas por rol.",
     benefits: [
-      { title: "Control de cartera", text: "Visualiza estados, vencimientos y seguimiento de pagos en tiempo real." },
-      { title: "Alertas automáticas", text: "Activa recordatorios y tareas para no perder seguimiento." },
-      { title: "Panel de seguimiento", text: "Consulta el avance financiero con una interfaz limpia y rápida." },
+      { title: "Toma de pedidos ágil", text: "Menú dinámico y personalización con notas especiales al instante desde cualquier tableta o celular." },
+      { title: "Cocina coordinada", text: "Pantalla de despacho con orden cronológico y cronómetros de control de tiempos de preparación." },
+      { title: "Métricas y administración", text: "Visualización en tiempo real del total vendido, platos más populares y control de stock del menú." },
     ],
     overviewCards: [
       {
-        title: "Seguimiento de deuda",
-        text: "Centraliza pagos, vencimientos y estados de cuenta para que el equipo vea la cartera completa en un solo lugar.",
+        title: "Flujo en tiempo real",
+        text: "Sincronización inmediata entre salón y cocina. Notificaciones acústicas al mesero en cuanto su plato está listo para servir.",
         span: "lg:col-span-7",
-        icon: ReceiptText,
+        icon: Bell,
       },
       {
-        title: "Beneficios",
-        text: "Reduce mora, prioriza cobros y evita el trabajo manual de revisar múltiples fuentes cada día.",
+        title: "Beneficios operativos",
+        text: "Elimina errores de lectura, reduce tiempos de espera y optimiza la rotación de mesas mediante un flujo de trabajo digital.",
         span: "lg:col-span-5",
         icon: ShieldCheck,
       },
       {
         title: "Ideal para",
-        text: "Empresas que necesitan control diario sobre cartera, recordatorios y gestión rápida de incidencias.",
+        text: "Restaurantes y PYMES gastronómicas que buscan profesionalizar su servicio y tomar decisiones basadas en datos de venta real.",
         span: "lg:col-span-4",
         icon: FileClock,
       },
       {
         title: "Resultado esperado",
-        text: "Más orden, menos fricción y una operación capaz de reaccionar a tiempo ante cada vencimiento.",
+        text: "Una operación coordinada, cero platos perdidos y clientes satisfechos con un servicio rápido y sin fricciones.",
         span: "lg:col-span-8",
-        icon: Bell,
+        icon: Workflow,
       },
     ],
     shots: [
       {
-        title: "Panel financiero",
-        text: "Vista central para cartera, alertas y pagos.",
-        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80",
+        title: "Cocina - Gestión de Comandas",
+        text: "Pantalla interactiva con pedidos ordenados por orden de llegada y modificaciones destacadas.",
+        image: "/portafolio/src/cocina.png",
       },
       {
-        title: "Analítica de cobranza",
-        text: "Indicadores de mora y recuperación.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+        title: "Cocina - Pedidos en Preparación",
+        text: "Detalle del estado de cada comanda con control de tiempo transcurrido en preparación.",
+        image: "/portafolio/src/cocina1.png",
       },
       {
-        title: "Gestión de cartera",
-        text: "Orden por cliente, estado y prioridad.",
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80",
+        title: "Cocina - Control de Tiempos",
+        text: "Cronómetros integrados para evitar retrasos y garantizar entregas calientes.",
+        image: "/portafolio/src/cocina2.png",
+      },
+      {
+        title: "Cocina - Despacho de Órdenes",
+        text: "Interfaz simplificada para que el cocinero notifique al mesero con un solo clic.",
+        image: "/portafolio/src/cocina3.png",
+      },
+      {
+        title: "Mesero - Panel de Mesas",
+        text: "Estado visual de cada mesa (vacía, consumiendo, con platos listos por retirar).",
+        image: "/portafolio/src/mesero1.png",
+      },
+      {
+        title: "Mesero - Menú Digital",
+        text: "Categorización intuitiva de platos para agilizar la toma del pedido en mesa.",
+        image: "/portafolio/src/mesero2.png",
+      },
+      {
+        title: "Mesero - Personalización",
+        text: "Inclusión rápida de notas especiales como términos de carne o alergias alimentarias.",
+        image: "/portafolio/src/mesero3.png",
+      },
+      {
+        title: "Mesero - Confirmación de Pedido",
+        text: "Resumen detallado de la mesa para evitar equivocaciones antes de enviar a cocina.",
+        image: "/portafolio/src/mesero4.png",
+      },
+      {
+        title: "Mesero - Alerta de Plato Listo",
+        text: "Aviso en pantalla y doble campana acústica que suena en el dispositivo asignado.",
+        image: "/portafolio/src/mesero5.png",
+      },
+      {
+        title: "Mesero - Seguimiento de Cuenta",
+        text: "Control del consumo acumulado y estado actual del servicio por mesa.",
+        image: "/portafolio/src/mesero6.png",
+      },
+      {
+        title: "Administrador - Métricas Generales",
+        text: "Dashboard principal con facturación diaria, ticket promedio y cantidad de comandas.",
+        image: "/portafolio/src/admin.png",
+      },
+      {
+        title: "Administrador - Reportes de Ventas",
+        text: "Gráficos interactivos de ingresos para una toma de decisiones informada.",
+        image: "/portafolio/src/admin1.png",
+      },
+      {
+        title: "Administrador - Top de Platos",
+        text: "Identificación inmediata de los productos más vendidos y rentables del día.",
+        image: "/portafolio/src/admin2.png",
+      },
+      {
+        title: "Administrador - Gestión del Menú",
+        text: "Administración ágil de platos, precios y disponibilidad de stock en segundos.",
+        image: "/portafolio/src/admin3.png",
+      },
+      {
+        title: "Administrador - Control de Usuarios",
+        text: "Alta, edición y asignación de roles para el personal del salón y de cocina.",
+        image: "/portafolio/src/admin4.png",
       },
     ],
-    icon: DatabaseZap,
+    icon: Utensils,
   },
   automatizaciones: {
     title: "Automatizaciones",

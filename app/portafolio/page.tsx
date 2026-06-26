@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Bot, ReceiptText, Workflow, Globe2 } from "lucide-react";
+import { ArrowUpRight, Bot, ReceiptText, Workflow, Globe2, Utensils } from "lucide-react";
 
 const cases = [
   {
-    href: "/portafolio/software/cobranzas",
-    title: "Web de Cobranzas",
-    text: "Portal financiero para seguimiento de pagos, gestión de deuda y reportes en tiempo real.",
-    icon: ReceiptText,
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80",
+    href: "/portafolio/software/comandas",
+    title: "Sistema de Comandas",
+    text: "Plataforma web en tiempo real para optimizar la toma de pedidos, coordinación de cocina y métricas en restaurantes.",
+    icon: Utensils,
+    image: "/portafolio/src/mesero1.png",
   },
   {
     href: "/portafolio/software/automatizaciones",
@@ -43,7 +43,7 @@ export default function PortfolioPage() {
             Resultados Reales a Velocidad Luz.
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-zinc-300">
-            Un catálogo visual de soluciones que venden: cobranzas, automatizaciones, chatbots y páginas web.
+            Un catálogo visual de soluciones que venden: comandas, automatizaciones, chatbots y páginas web.
           </p>
         </section>
 
