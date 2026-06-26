@@ -439,7 +439,9 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                         {step.number}
                       </div>
 
-                      <div className="w-full pl-12 md:pl-0 md:w-1/2 md:px-8">
+                      <div className={`w-full pl-12 md:w-1/2 ${
+                        isEven ? "md:pl-12 md:pr-0" : "md:pl-0 md:pr-12"
+                      }`}>
                         <div className="rounded-[1.75rem] border border-white/15 bg-white/[0.03] p-6 backdrop-blur-xl hover:border-yellow-400/20 transition">
                           <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-yellow-300">Paso {step.number}</span>
                           <h3 className="mt-2 text-lg font-semibold text-zinc-50 font-mono">{step.title}</h3>
