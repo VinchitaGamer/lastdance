@@ -329,7 +329,7 @@ export default function ChatWidget() {
                                     if (e.key === "Enter") handleSendMessage();
                                 }}
                                 placeholder="Escribe tu mensaje..."
-                                className="flex-1 rounded-xl bg-black/40 border border-white/10 px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-yellow-400/50"
+                                className="flex-1 rounded-xl bg-black/40 border border-white/10 px-4 py-2.5 text-base sm:text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-yellow-400/50"
                             />
                             <button
                                 onClick={handleSendMessage}
