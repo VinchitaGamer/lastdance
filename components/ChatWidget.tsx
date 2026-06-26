@@ -50,6 +50,55 @@ export default function ChatWidget() {
         setSessionId(id);
     }, []);
 
+    // Visual Viewport tracking for mobile keyboard adjustments
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const updateViewportHeight = () => {
+            const vv = window.visualViewport;
+            if (vv) {
+                document.documentElement.style.setProperty(
+                    "--visual-viewport-height",
+                    `${vv.height}px`
+                );
+            } else {
+                document.documentElement.style.setProperty(
+                    "--visual-viewport-height",
+                    `${window.innerHeight}px`
+                );
+            }
+        };
+
+        const vv = window.visualViewport;
+        if (vv) {
+            vv.addEventListener("resize", updateViewportHeight);
+            vv.addEventListener("scroll", updateViewportHeight);
+        }
+        window.addEventListener("resize", updateViewportHeight);
+        updateViewportHeight();
+
+        return () => {
+            if (vv) {
+                vv.removeEventListener("resize", updateViewportHeight);
+                vv.removeEventListener("scroll", updateViewportHeight);
+            }
+            window.removeEventListener("resize", updateViewportHeight);
+        };
+    }, []);
+
+    // Lock body scroll on mobile when chat is open
+    useEffect(() => {
+        if (typeof document === "undefined") return;
+        if (isOpen && window.innerWidth < 640) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isOpen]);
+
     // Scroll to bottom on new messages
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -176,7 +225,7 @@ export default function ChatWidget() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.85, y: 30 }}
                         transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="fixed bottom-20 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-24 z-50 flex h-[calc(100dvh-7rem)] sm:h-[500px] w-auto sm:w-[400px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/95 shadow-2xl backdrop-blur-xl"
+                        className="fixed inset-0 sm:inset-auto sm:right-6 sm:bottom-24 z-50 flex h-[var(--visual-viewport-height,100dvh)] sm:h-[500px] w-full sm:w-[400px] flex-col overflow-hidden rounded-none sm:rounded-2xl border-none sm:border sm:border-white/10 bg-zinc-950 sm:bg-zinc-950/95 shadow-2xl backdrop-blur-none sm:backdrop-blur-xl"
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3">
