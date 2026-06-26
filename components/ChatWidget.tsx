@@ -158,7 +158,7 @@ export default function ChatWidget() {
             {/* Bubble Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-yellow-400 text-zinc-950 shadow-[0_0_24px_rgba(250,204,21,0.35)] transition-all duration-300 hover:scale-105 hover:bg-yellow-300 hover:shadow-[0_0_32px_rgba(250,204,21,0.5)] active:scale-95 cursor-pointer"
+                className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-yellow-400 text-zinc-950 shadow-[0_0_24px_rgba(250,204,21,0.35)] transition-all duration-300 hover:scale-105 hover:bg-yellow-300 hover:shadow-[0_0_32px_rgba(250,204,21,0.5)] active:scale-95 cursor-pointer"
                 aria-label="Abrir chat de soporte"
             >
                 {isOpen ? (
@@ -176,7 +176,7 @@ export default function ChatWidget() {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.85, y: 30 }}
                         transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="fixed bottom-24 right-6 z-50 flex h-[500px] w-[360px] sm:w-[400px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/95 shadow-2xl backdrop-blur-xl"
+                        className="fixed bottom-20 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-24 z-50 flex h-[calc(100dvh-7rem)] sm:h-[500px] w-auto sm:w-[400px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/95 shadow-2xl backdrop-blur-xl"
                     >
                         {/* Header */}
                         <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3">
