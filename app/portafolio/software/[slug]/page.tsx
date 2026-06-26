@@ -1,8 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
 import {
-  ArrowLeft,
-  ArrowRight,
   Bell,
   Bot,
   DatabaseZap,
@@ -19,6 +15,7 @@ import {
   Utensils,
 } from "lucide-react";
 import { notFound } from "next/navigation";
+import CaseStudyClient from "./CaseStudyClient";
 
 const softwareCases = {
   comandas: {
@@ -36,25 +33,25 @@ const softwareCases = {
         title: "Flujo en tiempo real",
         text: "Sincronización inmediata entre salón y cocina. Notificaciones acústicas al mesero en cuanto su plato está listo para servir.",
         span: "lg:col-span-7",
-        icon: Bell,
+        icon: "Bell",
       },
       {
         title: "Beneficios operativos",
         text: "Elimina errores de lectura, reduce tiempos de espera y optimiza la rotación de mesas mediante un flujo de trabajo digital.",
         span: "lg:col-span-5",
-        icon: ShieldCheck,
+        icon: "ShieldCheck",
       },
       {
         title: "Ideal para",
         text: "Restaurantes y PYMES gastronómicas que buscan profesionalizar su servicio y tomar decisiones basadas en datos de venta real.",
         span: "lg:col-span-4",
-        icon: FileClock,
+        icon: "FileClock",
       },
       {
         title: "Resultado esperado",
         text: "Una operación coordinada, cero platos perdidos y clientes satisfechos con un servicio rápido y sin fricciones.",
         span: "lg:col-span-8",
-        icon: Workflow,
+        icon: "Workflow",
       },
     ],
     shots: [
@@ -134,7 +131,7 @@ const softwareCases = {
         image: "/portafolio/src/admin4.png",
       },
     ],
-    icon: Utensils,
+    icon: "Utensils",
   },
   automatizaciones: {
     title: "Automatizaciones",
@@ -151,25 +148,25 @@ const softwareCases = {
         title: "Flujos conectados",
         text: "Une ventas, correo y facturación en recorridos automáticos que eliminan pasos manuales.",
         span: "lg:col-span-7",
-        icon: Workflow,
+        icon: "Workflow",
       },
       {
         title: "Beneficios",
         text: "Menos errores, más velocidad y menos dependencia de tareas repetidas por parte del equipo.",
         span: "lg:col-span-5",
-        icon: PlugZap,
+        icon: "PlugZap",
       },
       {
         title: "Ideal para",
         text: "Operaciones que quieren responder más rápido y mantener un flujo limpio entre áreas.",
         span: "lg:col-span-4",
-        icon: LayoutGrid,
+        icon: "LayoutGrid",
       },
       {
         title: "Resultado esperado",
         text: "Una operación ligera, conectada y preparada para escalar sin añadir fricción.",
         span: "lg:col-span-8",
-        icon: FileClock,
+        icon: "FileClock",
       },
     ],
     shots: [
@@ -189,7 +186,7 @@ const softwareCases = {
         image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80",
       },
     ],
-    icon: ScanSearch,
+    icon: "ScanSearch",
   },
   chatbots: {
     title: "Chatbots IA",
@@ -206,25 +203,25 @@ const softwareCases = {
         title: "Asistencia continua",
         text: "Responde preguntas, guía usuarios y mantiene conversaciones activas sin depender de horarios.",
         span: "lg:col-span-7",
-        icon: Bot,
+        icon: "Bot",
       },
       {
         title: "Beneficios",
         text: "Atención constante, captación de leads y filtros iniciales para escalar al equipo correcto.",
         span: "lg:col-span-5",
-        icon: MessageSquareText,
+        icon: "MessageSquareText",
       },
       {
         title: "Ideal para",
         text: "Negocios que quieren responder rápido, ordenar conversaciones y no perder oportunidades.",
         span: "lg:col-span-4",
-        icon: Bell,
+        icon: "Bell",
       },
       {
         title: "Resultado esperado",
         text: "Más velocidad de respuesta, mejor experiencia y una base clara para vender más.",
         span: "lg:col-span-8",
-        icon: FileClock,
+        icon: "FileClock",
       },
     ],
     shots: [
@@ -244,7 +241,7 @@ const softwareCases = {
         image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80",
       },
     ],
-    icon: Bot,
+    icon: "Bot",
   },
   "paginas-web": {
     title: "Páginas Web",
@@ -261,25 +258,25 @@ const softwareCases = {
         title: "Presencia digital",
         text: "Construye una base visual sólida con mensajes claros, secciones ordenadas y foco comercial.",
         span: "lg:col-span-7",
-        icon: Globe2,
+        icon: "Globe2",
       },
       {
         title: "Beneficios",
         text: "Más conversión, una marca más fuerte y una experiencia responsive en todos los dispositivos.",
         span: "lg:col-span-5",
-        icon: LayoutGrid,
+        icon: "LayoutGrid",
       },
       {
         title: "Ideal para",
         text: "Empresas que necesitan una vitrina digital elegante y preparada para generar oportunidades.",
         span: "lg:col-span-4",
-        icon: MonitorSmartphone,
+        icon: "MonitorSmartphone",
       },
       {
         title: "Resultado esperado",
         text: "Una web que comunica valor, acelera la confianza y empuja a la acción.",
         span: "lg:col-span-8",
-        icon: FileClock,
+        icon: "FileClock",
       },
     ],
     shots: [
@@ -299,7 +296,7 @@ const softwareCases = {
         image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1600&q=80",
       },
     ],
-    icon: Globe2,
+    icon: "Globe2",
   },
 } as const;
 
@@ -317,116 +314,5 @@ export default async function SoftwareCasePage({ params }: { params: Promise<{ s
     notFound();
   }
 
-  return (
-    <main className="relative overflow-hidden bg-zinc-950 px-4 py-20 text-zinc-50 sm:px-6 lg:px-8 lg:py-28">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.14),_transparent_24%),linear-gradient(180deg,_rgba(255,255,255,0.03),_transparent_20%)]" />
-
-      <div className="relative mx-auto w-full max-w-7xl space-y-12">
-        <div className="flex items-center justify-between gap-4">
-          <Link
-            href="/portafolio/software"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs uppercase tracking-[0.3em] text-zinc-400 transition hover:border-yellow-400/40 hover:text-yellow-300"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Volver
-          </Link>
-          <span className="text-xs uppercase tracking-[0.4em] text-yellow-300">Portafolio / Software</span>
-        </div>
-
-        <section className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <div className="space-y-6">
-            <p className="text-xs uppercase tracking-[0.4em] text-yellow-300">{caseData.title}</p>
-            <h1 className="max-w-3xl text-5xl font-semibold leading-none text-balance sm:text-6xl lg:text-7xl">
-              {caseData.title}
-            </h1>
-            <p className="max-w-2xl text-lg leading-8 text-zinc-300">{caseData.description}</p>
-            <button
-              type="button"
-              className="inline-flex h-14 min-w-[180px] items-center justify-center gap-2 rounded-full border border-yellow-400/50 bg-yellow-400 px-6 text-sm font-semibold text-zinc-950 transition hover:bg-yellow-300"
-            >
-              Probar
-              <ArrowRight className="h-4 w-4" />
-            </button>
-          </div>
-
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl">
-            <div className="flex items-start justify-between gap-4">
-              <caseData.icon className="h-12 w-12 text-yellow-300 drop-shadow-[0_0_16px_rgba(250,204,21,0.5)]" />
-              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-xs uppercase tracking-[0.3em] text-zinc-400">
-                01
-              </span>
-            </div>
-            <p className="mt-6 text-sm leading-7 text-zinc-300">{caseData.overview}</p>
-          </div>
-        </section>
-
-        <section className="grid gap-4 lg:grid-cols-12">
-          {caseData.overviewCards.map((card, index) => (
-            <article
-              key={card.title}
-              className={`rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl ${card.span}`}
-            >
-              <div className="flex items-start justify-between gap-4">
-                <card.icon className="h-10 w-10 text-yellow-300 drop-shadow-[0_0_14px_rgba(250,204,21,0.5)]" />
-                <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-xs uppercase tracking-[0.3em] text-zinc-400">
-                  0{index + 1}
-                </span>
-              </div>
-              <h2 className="mt-6 text-2xl font-semibold text-zinc-50">{card.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-zinc-300 sm:text-base">{card.text}</p>
-            </article>
-          ))}
-        </section>
-
-        <section className="space-y-5">
-          <div className="flex items-end justify-between gap-4">
-            <div className="space-y-2">
-              <p className="text-xs uppercase tracking-[0.35em] text-yellow-300">Capturas</p>
-              <h2 className="text-2xl font-semibold text-zinc-50">Carrusel de vista previa</h2>
-            </div>
-            <p className="hidden text-sm text-zinc-400 md:block">Desliza horizontalmente para recorrer las capturas.</p>
-          </div>
-
-          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4">
-            {caseData.shots.map((shot, index) => (
-              <article
-                key={shot.image}
-                className="min-w-[86vw] snap-center overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-900 shadow-2xl shadow-black/30 md:min-w-[52vw] lg:min-w-[38vw]"
-              >
-                <div className="relative h-[420px] w-full md:h-[520px]">
-                  <Image
-                    src={shot.image}
-                    alt={`${caseData.title} captura ${index + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 86vw, 38vw"
-                    className="object-cover transition duration-500 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/18 to-transparent" />
-                  <div className="absolute inset-0 flex items-end p-5 md:p-6">
-                    <div className="max-w-md rounded-2xl border border-white/10 bg-zinc-950/70 p-4 backdrop-blur-xl">
-                      <p className="text-xs uppercase tracking-[0.35em] text-yellow-300">Captura 0{index + 1}</p>
-                      <h3 className="mt-2 text-2xl font-semibold text-zinc-50">{shot.title}</h3>
-                      <p className="mt-2 text-sm leading-7 text-zinc-300">{shot.text}</p>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="grid gap-3 md:grid-cols-3">
-          {caseData.benefits.map((benefit) => (
-            <article
-              key={benefit.title}
-              className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl"
-            >
-              <h3 className="text-xl font-semibold text-zinc-50">{benefit.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-zinc-300">{benefit.text}</p>
-            </article>
-          ))}
-        </section>
-      </div>
-    </main>
-  );
+  return <CaseStudyClient slug={slug} caseData={caseData as any} />;
 }
