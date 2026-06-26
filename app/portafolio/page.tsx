@@ -8,7 +8,7 @@ const cases = [
     title: "Sistema de Comandas",
     text: "Plataforma web en tiempo real para optimizar la toma de pedidos, coordinación de cocina y métricas en restaurantes.",
     icon: Utensils,
-    image: "/portafolio/src/mesero1.png",
+    image: "https://i.pinimg.com/1200x/d2/ca/6d/d2ca6dda107e94020437bc11e9342934.jpg",
   },
   {
     href: "/portafolio/software/automatizaciones",

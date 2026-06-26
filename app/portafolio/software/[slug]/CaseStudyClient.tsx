@@ -403,11 +403,6 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                       sizes="(max-width: 768px) 80vw, 35vw"
                       className="object-contain transition duration-500 group-hover:scale-[1.01]"
                     />
-                    <div className="absolute inset-0 bg-zinc-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="text-xs font-mono uppercase tracking-[0.25em] text-yellow-300 bg-zinc-950/90 px-4 py-2 rounded-full border border-white/10 shadow-lg">
-                        Ver Pantalla Completa 🔍
-                      </span>
-                    </div>
                   </div>
                   <div className="p-6 border-t border-white/5 bg-zinc-900/30">
                     <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-yellow-300">Captura 0{index + 1}</p>
