@@ -135,55 +135,45 @@ const softwareCases = {
   },
   automatizaciones: {
     title: "Automatizaciones",
-    description: "Flujos conectados para ventas, correos y facturación sin trabajo manual repetitivo.",
+    description: "Flujos conectados para ventas, correos y operaciones de oficina sin trabajo manual repetitivo.",
     overview:
-      "Ideal para unir procesos dispersos en una operación más rápida, ordenada y menos dependiente de tareas manuales.",
+      "Ideal para unir procesos dispersos en una operación más rápida, ordenada y libre de tareas manuales repetitivas.",
     benefits: [
-      { title: "Menos tareas manuales", text: "Elimina pasos repetitivos y concentra el trabajo en decisiones de valor." },
-      { title: "Procesos conectados", text: "Ventas, correos y facturación trabajando como un solo flujo." },
-      { title: "Mayor velocidad", text: "Gana tiempo operativo sin perder trazabilidad ni control." },
+      { title: "Cero tareas manuales", text: "Elimina pasos repetitivos y concentra a tu equipo en tareas de valor." },
+      { title: "Procesos conectados", text: "Ventas, correos y operaciones de backoffice trabajando como un solo flujo." },
+      { title: "Mayor velocidad", text: "Gana tiempo operativo y responde al instante sin perder el control." },
     ],
     overviewCards: [
       {
         title: "Flujos conectados",
-        text: "Une ventas, correo y facturación en recorridos automáticos que eliminan pasos manuales.",
+        text: "Une ventas, correos y administración en recorridos automáticos que eliminan la fricción operativa.",
         span: "lg:col-span-7",
         icon: "Workflow",
       },
       {
-        title: "Beneficios",
-        text: "Menos errores, más velocidad y menos dependencia de tareas repetidas por parte del equipo.",
+        title: "Beneficios de negocio",
+        text: "Menos errores de digitación, respuestas más veloces y mayor capacidad de escalamiento sin aumentar personal.",
         span: "lg:col-span-5",
         icon: "PlugZap",
       },
       {
         title: "Ideal para",
-        text: "Operaciones que quieren responder más rápido y mantener un flujo limpio entre áreas.",
+        text: "Negocios en crecimiento que quieren optimizar su tiempo y delegar tareas repetitivas a sistemas inteligentes.",
         span: "lg:col-span-4",
         icon: "LayoutGrid",
       },
       {
         title: "Resultado esperado",
-        text: "Una operación ligera, conectada y preparada para escalar sin añadir fricción.",
+        text: "Una operación ágil, unificada y lista para escalar ventas sin sobrecargar de trabajo al equipo.",
         span: "lg:col-span-8",
         icon: "FileClock",
       },
     ],
     shots: [
       {
-        title: "Flujo de trabajo",
-        text: "Secuencias automáticas para operaciones.",
+        title: "Operación de Negocios",
+        text: "Procesamiento de datos en tiempo real.",
         image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80",
-      },
-      {
-        title: "Integraciones",
-        text: "Conexiones entre sistemas y tareas.",
-        image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1600&q=80",
-      },
-      {
-        title: "Automatización técnica",
-        text: "Menos repetición, más control.",
-        image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80",
       },
     ],
     icon: "ScanSearch",

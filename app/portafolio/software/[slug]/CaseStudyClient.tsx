@@ -35,6 +35,94 @@ import {
   Users,
   Sliders,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const automationCases = [
+  {
+    id: "leads",
+    title: "Leads y Agenda",
+    subtitle: "Sincronización de Leads & Agenda (Ventas)",
+    description: "Captación inmediata de prospectos web y automatización del agendamiento de llamadas comerciales para que ningún cliente potencial se enfríe.",
+    icon: "Workflow",
+    problem: "Los leads registrados en anuncios o formularios web tardaban hasta 24 horas en ser contactados por un asesor. Esto hacía que el 40% de los clientes potenciales perdieran interés o contrataran a la competencia.",
+    solution: "Conectamos los anuncios y formularios directamente con el CRM y WhatsApp. El sistema procesa el contacto al instante, avisa al equipo en Slack y envía un mensaje personalizado al cliente con un enlace para agendar su llamada.",
+    tools: ["Meta Ads", "HubSpot CRM", "Slack", "WhatsApp API", "Make.com"],
+    flow: [
+      { step: "1", title: "Contacto Registrado", desc: "El prospecto completa un anuncio en Meta o formulario web." },
+      { step: "2", title: "Sincronización en CRM", desc: "El contacto se crea automáticamente en HubSpot y se asigna a un vendedor." },
+      { step: "3", title: "Alerta Instantánea", desc: "Se envía una notificación detallada a Slack para que el equipo comercial esté enterado." },
+      { step: "4", title: "Agenda del Cliente", desc: "Se envía un mensaje de WhatsApp automatizado con el enlace directo para agendar la llamada." }
+    ],
+    roi: [
+      { label: "Tiempo de Respuesta", value: "< 2 min", desc: "Antes tardaba hasta 24 horas." },
+      { label: "Aumento de Agendados", value: "+35%", desc: "Más llamadas comerciales concretadas." },
+      { label: "Error Humano", value: "0%", desc: "Cero datos perdidos o no registrados." }
+    ]
+  },
+  {
+    id: "documentos",
+    title: "Lectura de Documentos",
+    subtitle: "Clasificación y Extracción de PDFs con IA (Backoffice)",
+    description: "Lectura inteligente de adjuntos (PDFs) en correos corporativos para archivarlos ordenadamente en carpetas de nube e incorporar los datos a hojas de cálculo.",
+    icon: "ScanSearch",
+    problem: "Una oficina administrativa recibía decenas de correos diarios con facturas, recibos y órdenes de compra en PDF. Un empleado debía descargar cada archivo, leer los montos manualmente, renombrar el documento y registrar los datos en Excel.",
+    solution: "Un agente automatizado monitorea el correo electrónico. Cuando llega un documento, la Inteligencia Artificial (IA) extrae los datos clave (monto, fecha, proveedor), renombra el archivo, lo guarda en la carpeta correspondiente de Google Drive y llena la base de datos automáticamente.",
+    tools: ["Gmail", "OpenAI GPT-4", "Google Drive", "Google Sheets", "n8n"],
+    flow: [
+      { step: "1", title: "Recepción de Correo", desc: "El sistema detecta un nuevo correo con archivos adjuntos en PDF." },
+      { step: "2", title: "Lectura con IA", desc: "La IA lee el contenido del PDF y extrae fecha, proveedor, conceptos e importe total." },
+      { step: "3", title: "Archivo en Nube", desc: "El PDF es renombrado (ej: 'Proveedor_Fecha_Monto.pdf') y guardado en Google Drive." },
+      { step: "4", title: "Registro Automático", desc: "Los datos extraídos se añaden como una nueva fila en Google Sheets en tiempo real." }
+    ],
+    roi: [
+      { label: "Horas Semanales Ahorradas", value: "15 hrs", desc: "Liberación de trabajo manual repetitivo." },
+      { label: "Tiempo de Procesamiento", value: "5 seg", desc: "Por documento recibido." },
+      { label: "Precisión de Lectura", value: "99.8%", desc: "Validado mediante filtros de IA." }
+    ]
+  },
+  {
+    id: "onboarding",
+    title: "Onboarding de Clientes",
+    subtitle: "Activación Automática de Proyectos (Operaciones)",
+    description: "Creación inmediata de canales de comunicación, carpetas de trabajo y generación de contratos digitales tan pronto como se confirma un pago.",
+    icon: "ShieldCheck",
+    problem: "Cada vez que un cliente pagaba, el equipo tardaba hasta 2 horas en crear manualmente un canal de Slack, una carpeta en Google Drive, un tablero de Notion, redactar el contrato y enviar el correo de bienvenida.",
+    solution: "Automatizamos todo el proceso de inicio. Al confirmarse el pago, el sistema genera de forma autónoma el canal de comunicación, el espacio en Notion con plantillas listas, el contrato digital y dispara los accesos al cliente en segundos.",
+    tools: ["Stripe", "Slack", "Notion", "Google Drive", "ActiveCampaign", "Make.com"],
+    flow: [
+      { step: "1", title: "Pago Confirmado", desc: "El cliente realiza el pago mediante Stripe y se activa la señal." },
+      { step: "2", title: "Espacio de Trabajo", desc: "Se crea una carpeta compartida en Drive y un tablero de Notion clonado de la plantilla maestra." },
+      { step: "3", title: "Canal de Slack", desc: "Se abre el canal del proyecto en Slack e invita automáticamente al cliente y al equipo." },
+      { step: "4", title: "Email de Accesos", desc: "Se envía un correo con el contrato digital firmado y los enlaces de acceso directo." }
+    ],
+    roi: [
+      { label: "Tiempo de Activación", value: "10 seg", desc: "Antes requería 2 horas de gestión manual." },
+      { label: "Experiencia del Cliente", value: "10/10", desc: "Atención inmediata sin esperas de onboarding." },
+      { label: "Cuentas y Accesos", value: "100%", desc: "Sin accesos olvidados o mal configurados." }
+    ]
+  },
+  {
+    id: "reportes",
+    title: "Reportes Consolidados",
+    subtitle: "Extracción e Informes Multi-Canal (Métricas)",
+    description: "Recopilación automática de presupuestos, clics y conversiones de múltiples redes de anuncios en un solo informe consolidado enviado directamente por canales internos.",
+    icon: "BarChart3",
+    problem: "El equipo de marketing pasaba toda la mañana del lunes ingresando a Meta Ads, Google Ads y TikTok Ads para descargar reportes, copiar las métricas a un Excel y redactar un resumen para los directores de la empresa.",
+    solution: "Establecimos un proceso programado (cron job) que cada lunes a las 8:00 AM se conecta a las APIs oficiales de las redes de anuncios, consolida la inversión y resultados en una base de datos central y envía un reporte en formato PDF ordenado a los canales directos de la empresa.",
+    tools: ["Meta Ads API", "Google Ads API", "TikTok Ads API", "Google BigQuery", "Slack / Email"],
+    flow: [
+      { step: "1", title: "Conexión Directa", desc: "El sistema se comunica con las APIs de Meta, Google y TikTok a la hora programada." },
+      { step: "2", title: "Consolidación de Datos", desc: "Se agrupan métricas como gasto, impresiones, clics y costo por adquisición." },
+      { step: "3", title: "Generación de Reporte", desc: "Se genera un informe PDF limpio y resumido con gráficos de rendimiento." },
+      { step: "4", title: "Envío al Equipo", desc: "Se envía automáticamente por correo y Slack a los directivos." }
+    ],
+    roi: [
+      { label: "Ahorro de Tiempo", value: "4 hrs", desc: "Menos mañanas de lunes perdidas en reportes." },
+      { label: "Actualización de Datos", value: "Lunes 8:00 AM", desc: "Información puntual y sin retrasos." },
+      { label: "Toma de Decisiones", value: "Inmediata", desc: "Datos unificados en un solo lugar sin buscar en múltiples paneles." }
+    ]
+  }
+];
 
 const getIconComponent = (iconName: string) => {
   const Icon = (Icons as any)[iconName];
@@ -76,7 +164,8 @@ interface CaseStudyClientProps {
 
 export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps) {
   const [activeShotIndex, setActiveShotIndex] = useState<number | null>(null);
-  const [activeRole, setActiveRole] = useState<"mesero" | "cocina" | "admin" >("mesero");
+  const [activeRole, setActiveRole] = useState<"mesero" | "cocina" | "admin">("mesero");
+  const [activeTab, setActiveTab] = useState<string>("leads");
 
   useEffect(() => {
     if (activeShotIndex === null) return;
@@ -222,13 +311,23 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
               {caseData.title}
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-zinc-300">{caseData.description}</p>
-            <button
-              type="button"
-              className="inline-flex h-14 min-w-[180px] items-center justify-center gap-2 rounded-full border border-yellow-400/50 bg-yellow-400 px-6 text-sm font-semibold text-zinc-950 transition hover:bg-yellow-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"
-            >
-              Probar Demo
-              <ArrowRight className="h-4 w-4" />
-            </button>
+            {slug === "automatizaciones" ? (
+              <Link
+                href="/contacto"
+                className="inline-flex h-14 min-w-[180px] items-center justify-center gap-2 rounded-full border border-yellow-400/50 bg-yellow-400 px-6 text-sm font-semibold text-zinc-950 transition hover:bg-yellow-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"
+              >
+                Cotizar Automatización
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            ) : (
+              <button
+                type="button"
+                className="inline-flex h-14 min-w-[180px] items-center justify-center gap-2 rounded-full border border-yellow-400/50 bg-yellow-400 px-6 text-sm font-semibold text-zinc-950 transition hover:bg-yellow-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]"
+              >
+                Probar Demo
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            )}
           </div>
 
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl">
@@ -276,26 +375,196 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
           </section>
         )}
 
-        <section className="grid gap-4 lg:grid-cols-12">
-          {caseData.overviewCards.map((card, index) => (
-            <article
-              key={card.title}
-              className={`rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl ${card.span}`}
-            >
-              <div className="flex items-start justify-between gap-4">
-                {(() => {
-                  const CardIcon = getIconComponent(card.icon);
-                  return <CardIcon className="h-10 w-10 text-yellow-300 drop-shadow-[0_0_14px_rgba(250,204,21,0.5)]" />;
-                })()}
-                <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-xs uppercase tracking-[0.3em] text-zinc-400">
-                  0{index + 1}
-                </span>
-              </div>
-              <h2 className="mt-6 text-2xl font-semibold text-zinc-50 font-mono">{card.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-zinc-300 sm:text-base">{card.text}</p>
-            </article>
-          ))}
-        </section>
+        {slug !== "automatizaciones" && (
+          <section className="grid gap-4 lg:grid-cols-12">
+            {caseData.overviewCards.map((card, index) => (
+              <article
+                key={card.title}
+                className={`rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl ${card.span}`}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  {(() => {
+                    const CardIcon = getIconComponent(card.icon);
+                    return <CardIcon className="h-10 w-10 text-yellow-300 drop-shadow-[0_0_14px_rgba(250,204,21,0.5)]" />;
+                  })()}
+                  <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-xs uppercase tracking-[0.3em] text-zinc-400">
+                    0{index + 1}
+                  </span>
+                </div>
+                <h2 className="mt-6 text-2xl font-semibold text-zinc-50 font-mono">{card.title}</h2>
+                <p className="mt-3 text-sm leading-7 text-zinc-300 sm:text-base">{card.text}</p>
+              </article>
+            ))}
+          </section>
+        )}
+
+        {slug === "automatizaciones" && (
+          <section className="space-y-12">
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-[0.35em] text-yellow-300 font-mono">Casos de Éxito</p>
+              <h2 className="text-3xl font-semibold text-zinc-50 font-mono">Automatizaciones Empresariales</h2>
+              <p className="max-w-2xl text-sm text-zinc-400 leading-relaxed">
+                Ejemplos reales de cómo optimizamos procesos repetitivos de oficina y ventas, eliminando cuellos de botella y potenciando el rendimiento de los equipos.
+              </p>
+            </div>
+
+            {/* Bento-style Tab Selectors */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {automationCases.map((item) => {
+                const IconComponent = getIconComponent(item.icon);
+                const isActive = activeTab === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setActiveTab(item.id)}
+                    className={`group text-left rounded-3xl border p-6 transition duration-300 flex flex-col justify-between min-h-[160px] cursor-pointer ${
+                      isActive
+                        ? "border-yellow-400 bg-yellow-400/[0.03] shadow-[0_0_20px_rgba(250,204,21,0.15)]"
+                        : "border-white/10 bg-white/[0.02] hover:border-yellow-400/40 hover:bg-white/[0.04]"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between w-full">
+                      <div className={`p-3 rounded-2xl transition duration-300 ${
+                        isActive ? "bg-yellow-400/10 text-yellow-300" : "bg-white/5 text-zinc-400 group-hover:text-zinc-200"
+                      }`}>
+                        <IconComponent className="h-6 w-6" />
+                      </div>
+                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">
+                        Caso 0{automationCases.indexOf(item) + 1}
+                      </span>
+                    </div>
+
+                    <div className="mt-4">
+                      <h3 className={`text-base font-semibold font-mono leading-tight ${isActive ? "text-yellow-300" : "text-zinc-100"}`}>
+                        {item.title}
+                      </h3>
+                      <p className="text-[11px] text-zinc-400 mt-1 leading-snug line-clamp-1">
+                        {item.subtitle}
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Selected Tab Detail with Framer Motion Transition */}
+            <AnimatePresence mode="wait">
+              {(() => {
+                const currentCase = automationCases.find((c) => c.id === activeTab) || automationCases[0];
+                const AlertIcon = getIconComponent("AlertTriangle");
+                const ZapIcon = getIconComponent("Zap");
+                const CpuIcon = getIconComponent("Cpu");
+
+                return (
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.25 }}
+                    className="grid gap-8 lg:grid-cols-12 items-stretch mt-10"
+                  >
+                    {/* Left: Problema vs Solución & Tools */}
+                    <div className="lg:col-span-5 flex flex-col justify-between gap-6">
+                      <div className="space-y-6">
+                        {/* Problema */}
+                        <div className="rounded-2xl border border-red-500/10 bg-red-500/[0.02] p-6 space-y-3">
+                          <div className="flex items-center gap-2 text-red-400">
+                            <AlertIcon className="h-5 w-5" />
+                            <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">El Problema Operativo (Antes)</h3>
+                          </div>
+                          <p className="text-sm text-zinc-300 leading-relaxed">{currentCase.problem}</p>
+                        </div>
+
+                        {/* Solución */}
+                        <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.02] p-6 space-y-3">
+                          <div className="flex items-center gap-2 text-emerald-400">
+                            <ZapIcon className="h-5 w-5" />
+                            <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">La Solución SOURDEV (Después)</h3>
+                          </div>
+                          <p className="text-sm text-zinc-300 leading-relaxed">{currentCase.solution}</p>
+                        </div>
+                      </div>
+
+                      {/* Herramientas */}
+                      <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 space-y-4">
+                        <div className="flex items-center gap-2 text-zinc-300">
+                          <CpuIcon className="h-5 w-5" />
+                          <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">Herramientas Conectadas</h3>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {currentCase.tools.map((tool) => (
+                            <span
+                              key={tool}
+                              className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1 text-xs text-zinc-300 font-mono"
+                            >
+                              {tool}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right: Flujo de Trabajo & ROI */}
+                    <div className="lg:col-span-7 flex flex-col justify-between gap-6">
+                      {/* Flujo de Trabajo */}
+                      <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 md:p-8 space-y-6 flex-1">
+                        <div className="space-y-1">
+                          <span className="text-xs uppercase tracking-[0.25em] text-yellow-300 font-mono">El Proceso Automatizado</span>
+                          <h3 className="text-xl font-semibold text-zinc-50 font-mono">¿Cómo funciona paso a paso?</h3>
+                        </div>
+
+                        <div className="relative pl-8 space-y-8 mt-6">
+                          {/* Vertical line connecting steps */}
+                          <div className="absolute left-[11px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-yellow-400 via-yellow-400/25 to-transparent" />
+
+                          {currentCase.flow.map((step) => (
+                            <div key={step.step} className="relative flex flex-col gap-1 group">
+                              {/* Step marker */}
+                              <div className="absolute -left-[29px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-zinc-950 border border-yellow-400 text-[10px] font-mono font-bold text-yellow-300 shadow-[0_0_8px_rgba(250,204,21,0.2)]">
+                                {step.step}
+                              </div>
+
+                              <h4 className="text-sm font-semibold text-zinc-100 font-mono leading-none pl-1">
+                                {step.title}
+                              </h4>
+                              <p className="text-xs text-zinc-400 leading-relaxed pl-1">
+                                {step.desc}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* ROI / Métricas */}
+                      <div className="grid gap-4 sm:grid-cols-3">
+                        {currentCase.roi.map((metric) => (
+                          <div
+                            key={metric.label}
+                            className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 space-y-2 flex flex-col justify-between"
+                          >
+                            <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 leading-tight">
+                              {metric.label}
+                            </span>
+                            <div>
+                              <div className="text-3xl font-bold font-mono text-yellow-300 leading-none">
+                                {metric.value}
+                              </div>
+                              <p className="text-[10px] text-zinc-500 mt-2 leading-snug">
+                                {metric.desc}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })()}
+            </AnimatePresence>
+          </section>
+        )}
 
         {slug === "comandas" && (
           <section className="space-y-8">
@@ -373,47 +642,49 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
           </section>
         )}
 
-        <section className="space-y-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div className="space-y-2">
-              <p className="text-xs uppercase tracking-[0.35em] text-yellow-300 font-mono">Capturas Reales</p>
-              <h2 className="text-3xl font-semibold text-zinc-50 font-mono">Carrusel de vista previa</h2>
+        {slug !== "automatizaciones" && (
+          <section className="space-y-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-[0.35em] text-yellow-300 font-mono">Capturas Reales</p>
+                <h2 className="text-3xl font-semibold text-zinc-50 font-mono">Carrusel de vista previa</h2>
+              </div>
+              <p className="text-xs text-zinc-400 font-mono">
+                Desliza horizontalmente. Haz clic en cualquier imagen para abrir la vista completa.
+              </p>
             </div>
-            <p className="text-xs text-zinc-400 font-mono">
-              Desliza horizontalmente. Haz clic en cualquier imagen para abrir la vista completa.
-            </p>
-          </div>
 
-          <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scrollbar-thin scrollbar-thumb-white/10">
-            {caseData.shots.map((shot, index) => {
-              const isAdminImage = shot.image.includes("admin");
-              const aspectStyle = isAdminImage ? { aspectRatio: "2636 / 1514" } : { aspectRatio: "1192 / 861" };
+            <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 scrollbar-thin scrollbar-thumb-white/10">
+              {caseData.shots.map((shot, index) => {
+                const isAdminImage = shot.image.includes("admin");
+                const aspectStyle = isAdminImage ? { aspectRatio: "2636 / 1514" } : { aspectRatio: "1192 / 861" };
 
-              return (
-                <article
-                  key={shot.image}
-                  onClick={() => setActiveShotIndex(index)}
-                  className="min-w-[80vw] sm:min-w-[48vw] lg:min-w-[35vw] snap-center overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-900/30 shadow-xl shadow-black/40 hover:border-yellow-400/40 transition duration-300 cursor-pointer group flex flex-col justify-between"
-                >
-                  <div className="relative w-full bg-zinc-950" style={aspectStyle}>
-                    <Image
-                      src={shot.image}
-                      alt={`${caseData.title} captura ${index + 1}`}
-                      fill
-                      sizes="(max-width: 768px) 80vw, 35vw"
-                      className="object-contain transition duration-500 group-hover:scale-[1.01]"
-                    />
-                  </div>
-                  <div className="p-6 border-t border-white/5 bg-zinc-900/30">
-                    <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-yellow-300">Captura 0{index + 1}</p>
-                    <h3 className="mt-1 text-base font-semibold text-zinc-100 font-mono leading-snug">{shot.title}</h3>
-                    <p className="mt-1.5 text-xs text-zinc-400 leading-relaxed">{shot.text}</p>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </section>
+                return (
+                  <article
+                    key={shot.image}
+                    onClick={() => setActiveShotIndex(index)}
+                    className="min-w-[80vw] sm:min-w-[48vw] lg:min-w-[35vw] snap-center overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-900/30 shadow-xl shadow-black/40 hover:border-yellow-400/40 transition duration-300 cursor-pointer group flex flex-col justify-between"
+                  >
+                    <div className="relative w-full bg-zinc-950" style={aspectStyle}>
+                      <Image
+                        src={shot.image}
+                        alt={`${caseData.title} captura ${index + 1}`}
+                        fill
+                        sizes="(max-width: 768px) 80vw, 35vw"
+                        className="object-contain transition duration-500 group-hover:scale-[1.01]"
+                      />
+                    </div>
+                    <div className="p-6 border-t border-white/5 bg-zinc-900/30">
+                      <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-yellow-300">Captura 0{index + 1}</p>
+                      <h3 className="mt-1 text-base font-semibold text-zinc-100 font-mono leading-snug">{shot.title}</h3>
+                      <p className="mt-1.5 text-xs text-zinc-400 leading-relaxed">{shot.text}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {slug === "comandas" && (
           <section className="space-y-12">
@@ -458,17 +729,19 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
           </section>
         )}
 
-        <section className="grid gap-3 md:grid-cols-3">
-          {caseData.benefits.map((benefit) => (
-            <article
-              key={benefit.title}
-              className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl"
-            >
-              <h3 className="text-xl font-semibold text-zinc-50 font-mono">{benefit.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-zinc-300">{benefit.text}</p>
-            </article>
-          ))}
-        </section>
+        {slug !== "automatizaciones" && (
+          <section className="grid gap-3 md:grid-cols-3">
+            {caseData.benefits.map((benefit) => (
+              <article
+                key={benefit.title}
+                className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl"
+              >
+                <h3 className="text-xl font-semibold text-zinc-50 font-mono">{benefit.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-zinc-300">{benefit.text}</p>
+              </article>
+            ))}
+          </section>
+        )}
       </div>
 
       {activeShotIndex !== null && (
