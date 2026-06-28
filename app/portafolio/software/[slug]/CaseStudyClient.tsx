@@ -307,7 +307,7 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
         <section className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div className="space-y-6">
             <p className="text-xs uppercase tracking-[0.4em] text-yellow-300">{caseData.title}</p>
-            <h1 className="max-w-3xl text-5xl font-semibold leading-none text-balance sm:text-6xl lg:text-7xl font-mono">
+            <h1 className="max-w-3xl text-4xl sm:text-6xl lg:text-7xl font-semibold leading-tight sm:leading-none text-balance font-mono">
               {caseData.title}
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-zinc-300">{caseData.description}</p>
@@ -408,8 +408,8 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
               </p>
             </div>
 
-            {/* Bento-style Tab Selectors */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* Bento-style Tab Selectors - Horizontal Swipeable on Mobile */}
+            <div className="flex overflow-x-auto gap-3 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-4 lg:gap-4 lg:pb-0">
               {automationCases.map((item) => {
                 const IconComponent = getIconComponent(item.icon);
                 const isActive = activeTab === item.id;
@@ -418,17 +418,17 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                     key={item.id}
                     type="button"
                     onClick={() => setActiveTab(item.id)}
-                    className={`group text-left rounded-3xl border p-6 transition duration-300 flex flex-col justify-between min-h-[160px] cursor-pointer ${
+                    className={`group text-left rounded-3xl border p-5 sm:p-6 transition duration-300 flex flex-col justify-between min-h-[140px] sm:min-h-[160px] min-w-[260px] sm:min-w-[280px] lg:min-w-0 shrink-0 snap-center cursor-pointer ${
                       isActive
                         ? "border-yellow-400 bg-yellow-400/[0.03] shadow-[0_0_20px_rgba(250,204,21,0.15)]"
                         : "border-white/10 bg-white/[0.02] hover:border-yellow-400/40 hover:bg-white/[0.04]"
                     }`}
                   >
                     <div className="flex items-start justify-between w-full">
-                      <div className={`p-3 rounded-2xl transition duration-300 ${
+                      <div className={`p-2.5 sm:p-3 rounded-2xl transition duration-300 ${
                         isActive ? "bg-yellow-400/10 text-yellow-300" : "bg-white/5 text-zinc-400 group-hover:text-zinc-200"
                       }`}>
-                        <IconComponent className="h-6 w-6" />
+                        <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                       </div>
                       <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">
                         Caso 0{automationCases.indexOf(item) + 1}
@@ -436,10 +436,10 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                     </div>
 
                     <div className="mt-4">
-                      <h3 className={`text-base font-semibold font-mono leading-tight ${isActive ? "text-yellow-300" : "text-zinc-100"}`}>
+                      <h3 className={`text-sm sm:text-base font-semibold font-mono leading-tight ${isActive ? "text-yellow-300" : "text-zinc-100"}`}>
                         {item.title}
                       </h3>
-                      <p className="text-[11px] text-zinc-400 mt-1 leading-snug line-clamp-1">
+                      <p className="text-[10px] sm:text-[11px] text-zinc-400 mt-1 leading-snug line-clamp-1">
                         {item.subtitle}
                       </p>
                     </div>
@@ -463,13 +463,13 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.25 }}
-                    className="grid gap-8 lg:grid-cols-12 items-stretch mt-10"
+                    className="grid gap-6 lg:gap-8 lg:grid-cols-12 items-stretch mt-6 sm:mt-10"
                   >
                     {/* Left: Problema vs Solución & Tools */}
                     <div className="lg:col-span-5 flex flex-col justify-between gap-6">
                       <div className="space-y-6">
                         {/* Problema */}
-                        <div className="rounded-2xl border border-red-500/10 bg-red-500/[0.02] p-6 space-y-3">
+                        <div className="rounded-2xl border border-red-500/10 bg-red-500/[0.02] p-5 sm:p-6 space-y-3">
                           <div className="flex items-center gap-2 text-red-400">
                             <AlertIcon className="h-5 w-5" />
                             <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">El Problema Operativo (Antes)</h3>
@@ -478,7 +478,7 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                         </div>
 
                         {/* Solución */}
-                        <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.02] p-6 space-y-3">
+                        <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.02] p-5 sm:p-6 space-y-3">
                           <div className="flex items-center gap-2 text-emerald-400">
                             <ZapIcon className="h-5 w-5" />
                             <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">La Solución SOURDEV (Después)</h3>
@@ -488,7 +488,7 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                       </div>
 
                       {/* Herramientas */}
-                      <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 space-y-4">
+                      <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-5 sm:p-6 space-y-4">
                         <div className="flex items-center gap-2 text-zinc-300">
                           <CpuIcon className="h-5 w-5" />
                           <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">Herramientas Conectadas</h3>
@@ -509,27 +509,27 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                     {/* Right: Flujo de Trabajo & ROI */}
                     <div className="lg:col-span-7 flex flex-col justify-between gap-6">
                       {/* Flujo de Trabajo */}
-                      <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 md:p-8 space-y-6 flex-1">
+                      <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-5 sm:p-6 md:p-8 space-y-6 flex-1">
                         <div className="space-y-1">
                           <span className="text-xs uppercase tracking-[0.25em] text-yellow-300 font-mono">El Proceso Automatizado</span>
-                          <h3 className="text-xl font-semibold text-zinc-50 font-mono">¿Cómo funciona paso a paso?</h3>
+                          <h3 className="text-lg sm:text-xl font-semibold text-zinc-50 font-mono">¿Cómo funciona paso a paso?</h3>
                         </div>
 
-                        <div className="relative pl-8 space-y-8 mt-6">
-                          {/* Vertical line connecting steps */}
-                          <div className="absolute left-[11px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-yellow-400 via-yellow-400/25 to-transparent" />
+                        <div className="relative space-y-6 sm:space-y-8 mt-6">
+                          {/* Vertical line connecting steps - perfectly aligned with left-3 */}
+                          <div className="absolute left-3 top-2 bottom-2 w-[1px] bg-gradient-to-b from-yellow-400 via-yellow-400/25 to-transparent" />
 
                           {currentCase.flow.map((step) => (
-                            <div key={step.step} className="relative flex flex-col gap-1 group">
-                              {/* Step marker */}
-                              <div className="absolute -left-[29px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-zinc-950 border border-yellow-400 text-[10px] font-mono font-bold text-yellow-300 shadow-[0_0_8px_rgba(250,204,21,0.2)]">
+                            <div key={step.step} className="relative pl-8 flex flex-col gap-1 group">
+                              {/* Step marker - centered at left-3 */}
+                              <div className="absolute left-3 -translate-x-1/2 top-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-zinc-950 border border-yellow-400 text-[10px] font-mono font-bold text-yellow-300 shadow-[0_0_8px_rgba(250,204,21,0.2)]">
                                 {step.step}
                               </div>
 
-                              <h4 className="text-sm font-semibold text-zinc-100 font-mono leading-none pl-1">
+                              <h4 className="text-xs sm:text-sm font-semibold text-zinc-100 font-mono leading-none pl-1">
                                 {step.title}
                               </h4>
-                              <p className="text-xs text-zinc-400 leading-relaxed pl-1">
+                              <p className="text-[11px] sm:text-xs text-zinc-400 leading-relaxed pl-1">
                                 {step.desc}
                               </p>
                             </div>
@@ -537,21 +537,21 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                         </div>
                       </div>
 
-                      {/* ROI / Métricas */}
-                      <div className="grid gap-4 sm:grid-cols-3">
+                      {/* ROI / Métricas - Optimized 3-Column Grid */}
+                      <div className="grid gap-2 sm:gap-4 grid-cols-3">
                         {currentCase.roi.map((metric) => (
                           <div
                             key={metric.label}
-                            className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 space-y-2 flex flex-col justify-between"
+                            className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 sm:p-5 flex flex-col justify-between min-h-[90px] sm:min-h-[120px]"
                           >
-                            <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 leading-tight">
+                            <span className="text-[8px] sm:text-[10px] font-mono uppercase tracking-wider text-zinc-400 leading-tight">
                               {metric.label}
                             </span>
                             <div>
-                              <div className="text-3xl font-bold font-mono text-yellow-300 leading-none">
+                              <div className="text-xl sm:text-3xl font-bold font-mono text-yellow-300 leading-none">
                                 {metric.value}
                               </div>
-                              <p className="text-[10px] text-zinc-500 mt-2 leading-snug">
+                              <p className="text-[9px] sm:text-[10px] text-zinc-500 mt-1 sm:mt-2 leading-tight hidden xs:block">
                                 {metric.desc}
                               </p>
                             </div>
