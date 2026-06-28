@@ -51,9 +51,15 @@ export default function ChatWidget() {
         setMounted(true);
         // Load or create sessionId
         let id = localStorage.getItem("sourdev_chat_session_id");
+        console.log("Hydration effect: loaded id from localStorage =", id);
         if (!id) {
             id = `web-${Math.random().toString(36).substring(2, 11)}`;
-            localStorage.setItem("sourdev_chat_session_id", id);
+            console.log("Hydration effect: generated new random id =", id);
+            try {
+                localStorage.setItem("sourdev_chat_session_id", id);
+            } catch (e) {
+                console.error("Hydration effect: failed to write to localStorage =", e);
+            }
         }
         setSessionId(id);
     }, []);
@@ -179,14 +185,16 @@ export default function ChatWidget() {
 
     // WebSocket setup when open
     useEffect(() => {
+        console.log("WebSocket useEffect triggered: isOpen =", isOpen, "sessionId =", sessionId);
         if (!isOpen || !sessionId) return;
 
         const wsUrl = getWsUrl();
+        console.log("WebSocket connecting to URL:", wsUrl);
         const socket = new WebSocket(wsUrl);
         socketRef.current = socket;
 
         socket.onopen = () => {
-            console.log("Conectado al servidor de WebSocket.");
+            console.log("Conectado al servidor de WebSocket. sessionID =", sessionId);
             // Request chat history
             socket.send(JSON.stringify({
                 action: "get_history",
@@ -197,6 +205,7 @@ export default function ChatWidget() {
         socket.onmessage = (event) => {
             try {
                 const data = JSON.parse(event.data);
+                console.log("WebSocket message received:", data);
                 
                 if (data.action === "history") {
                     if (data.history && data.history.length > 0) {
@@ -226,8 +235,8 @@ export default function ChatWidget() {
             }
         };
 
-        socket.onclose = () => {
-            console.log("WebSocket cerrado. Reintentando en 3s...");
+        socket.onclose = (event) => {
+            console.log(`WebSocket cerrado. Code: ${event.code}, Reason: ${event.reason || 'none'}. Reintentando en 3s...`);
         };
 
         socket.onerror = (err) => {
@@ -235,7 +244,9 @@ export default function ChatWidget() {
         };
 
         return () => {
+            console.log("WebSocket useEffect cleanup running for sessionID =", sessionId);
             if (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING) {
+                console.log("WebSocket useEffect cleanup: closing socket");
                 socket.close();
             }
         };
