@@ -117,9 +117,93 @@ const automationCases = [
       { step: "4", title: "Envío al Equipo", desc: "Se envía automáticamente por correo y Slack a los directivos." }
     ],
     roi: [
-      { label: "Ahorro de Tiempo", value: "4 hrs", desc: "Menos mañanas de lunes perdidas en reportes." },
-      { label: "Actualización de Datos", value: "Lunes 8:00 AM", desc: "Información puntual y sin retrasos." },
-      { label: "Toma de Decisiones", value: "Inmediata", desc: "Datos unificados en un solo lugar sin buscar en múltiples paneles." }
+    ]
+  }
+];
+
+const chatbotCases = [
+  {
+    id: "leads",
+    title: "Calificación de Leads",
+    subtitle: "Calificación y Captación de Clientes 24/7 (Ventas)",
+    description: "Asistente con IA que califica a los prospectos que visitan tu web o escriben a WhatsApp, filtra según presupuesto y agenda reuniones de venta automáticamente.",
+    icon: "UserCheck",
+    problem: "El equipo comercial perdía valioso tiempo atendiendo leads fríos o no calificados, mientras que los prospectos calificados se marchaban si no recibían respuesta en menos de 10 minutos.",
+    solution: "Un chatbot con IA conversacional que recopila datos clave (presupuesto, urgencia, necesidad), filtra los prospectos según criterios internos y agenda citas directo en Calendly.",
+    tools: ["OpenAI GPT-4o", "WhatsApp Cloud API", "HubSpot CRM", "Calendly", "Make.com"],
+    flow: [
+      { step: "1", title: "Contacto de Lead", desc: "El usuario inicia chat en la web o escribe un mensaje en WhatsApp." },
+      { step: "2", title: "Calificación con IA", desc: "La IA pregunta amigablemente sobre el proyecto, presupuesto y urgencia." },
+      { step: "3", title: "Agendamiento Activo", desc: "Si el lead cumple los criterios de presupuesto, la IA le ofrece horarios de reunión." },
+      { step: "4", title: "Registro y Alerta", desc: "Se crea el lead en el CRM con el resumen del chat y se notifica al asesor comercial." }
+    ],
+    roi: [
+      { label: "Leads Calificados", value: "+45%", desc: "Incremento en reuniones agendadas con clientes ideales." },
+      { label: "Tiempo de Respuesta", value: "< 10 seg", desc: "Atención inmediata para evitar el enfriamiento." },
+      { label: "Eficiencia de Ventas", value: "3x", desc: "Asesores comerciales dedicados únicamente a cerrar." }
+    ]
+  },
+  {
+    id: "soporte",
+    title: "Soporte al Cliente",
+    subtitle: "Resolución de Consultas y Pedidos (Atención)",
+    description: "Chatbot inteligente entrenado con toda la documentación de tu empresa para responder consultas comunes sobre envíos, garantías y facturas sin intervención humana.",
+    icon: "HelpCircle",
+    problem: "El equipo de soporte estaba saturado y tardaba hasta 8 horas en responder preguntas repetitivas sobre 'dónde está mi pedido' o 'cuáles son los métodos de pago', afectando la retención.",
+    solution: "Un asistente virtual conectado al sistema de envíos (Shopify/WooCommerce) y base de conocimientos, resolviendo de forma autónoma el 80% de las consultas comunes.",
+    tools: ["Shopify API", "OpenAI API", "Zendesk", "WhatsApp Cloud API", "n8n"],
+    flow: [
+      { step: "1", title: "Consulta de Cliente", desc: "El cliente pregunta sobre su orden o políticas de devolución por WhatsApp o web." },
+      { step: "2", title: "Búsqueda en Base de Datos", desc: "La IA consulta las bases de datos de envío y la base de conocimientos." },
+      { step: "3", title: "Respuesta al Instante", desc: "Se le da al cliente el estatus exacto de su envío o la respuesta requerida en segundos." },
+      { step: "4", title: "Traspaso Humano", desc: "Si el caso requiere atención humana, se transfiere el ticket con el historial completo al equipo." }
+    ],
+    roi: [
+      { label: "Consultas Automatizadas", value: "80%", desc: "Resueltas sin intervención del equipo de soporte." },
+      { label: "Tiempo de Espera", value: "0 seg", desc: "Resolución al instante sin esperas en cola." },
+      { label: "Satisfacción (CSAT)", value: "9.2/10", desc: "Mejora significativa por la inmediatez del bot." }
+    ]
+  },
+  {
+    id: "reservas",
+    title: "Reservas de Citas",
+    subtitle: "Gestión y Recordatorios de Citas (Servicios)",
+    description: "Chatbot conversacional para clínicas, consultorios o agencias que permite reservar, reprogramar y recordar citas a pacientes o clientes vía WhatsApp.",
+    icon: "CalendarRange",
+    problem: "Las inasistencias sin previo aviso (no-shows) representaban el 20% de las citas perdidas, y el personal invertía horas llamando manualmente para confirmar la agenda del día.",
+    solution: "Automatización completa de agenda interactiva en WhatsApp. El bot ofrece horas libres de Google Calendar, reserva al instante y envía recordatorios 24 horas antes.",
+    tools: ["Google Calendar API", "WhatsApp Cloud API", "Make.com", "Google Sheets"],
+    flow: [
+      { step: "1", title: "Solicitud de Cita", desc: "El paciente chatea solicitando una cita para consulta o tratamiento." },
+      { step: "2", title: "Oferta de Horas Libres", desc: "El chatbot consulta en tiempo real los espacios libres del médico o especialista." },
+      { step: "3", title: "Confirmación en Agenda", desc: "El usuario elige la hora deseada y la cita queda bloqueada inmediatamente." },
+      { step: "4", title: "Recordatorio Interactivo", desc: "24 horas antes de la cita, se envía un WhatsApp interactivo con botones de Confirmar/Reprogramar." }
+    ],
+    roi: [
+      { label: "Reducción de No-Shows", value: "-75%", desc: "Disminución radical de inasistencias gracias a recordatorios." },
+      { label: "Horas de Gestión", value: "-12 hrs/sem", desc: "Ahorro del personal en llamadas manuales de confirmación." },
+      { label: "Reservas Fuera de Horario", value: "40%", desc: "Citas agendadas por la noche o fines de semana de forma automática." }
+    ]
+  },
+  {
+    id: "ventas",
+    title: "Asistente de E-commerce",
+    subtitle: "Recomendación y Compra Asistida (Ventas)",
+    description: "Recomendador interactivo inteligente que hace preguntas rápidas a los usuarios y los guía a encontrar el producto ideal de tu catálogo con enlace de pago directo.",
+    icon: "ShoppingBag",
+    problem: "Muchos visitantes abandonaban la tienda online confundidos por la gran variedad de productos, lo que generaba altas tasas de rebote y baja conversión.",
+    solution: "Un asesor digital de compras que replica la atención de una tienda física por chat, recomendando productos basándose en las necesidades del cliente.",
+    tools: ["Shopify GraphQL API", "OpenAI GPT-4o", "Stripe API", "WhatsApp Cloud API"],
+    flow: [
+      { step: "1", title: "Descubrimiento de Necesidad", desc: "El comprador solicita ayuda para elegir un regalo o producto de cuidado personal." },
+      { step: "2", title: "Diagnóstico Rápido", desc: "El asistente hace 3 preguntas clave sobre gustos, tipo de piel o presupuesto." },
+      { step: "3", title: "Recomendación Inteligente", desc: "El chatbot presenta las 2 mejores opciones con su descripción y valor." },
+      { step: "4", title: "Enlace de Pago", desc: "Se envía un link para pagar vía Stripe o añadir al carrito directamente en Shopify." }
+    ],
+    roi: [
+      { label: "Conversión de Tienda", value: "+25%", desc: "Aumento de visitantes que finalizan la compra." },
+      { label: "Ticket Promedio", value: "+15%", desc: "Mayor facturación gracias a recomendaciones cruzadas." },
+      { label: "Recuperación de Carritos", value: "30%", desc: "Ventas recuperadas con recordatorios automáticos por WhatsApp." }
     ]
   }
 ];
@@ -166,6 +250,10 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
   const [activeShotIndex, setActiveShotIndex] = useState<number | null>(null);
   const [activeRole, setActiveRole] = useState<"mesero" | "cocina" | "admin">("mesero");
   const [activeTab, setActiveTab] = useState<string>("leads");
+
+  useEffect(() => {
+    setActiveTab("leads");
+  }, [slug]);
 
   useEffect(() => {
     if (activeShotIndex === null) return;
@@ -319,6 +407,21 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                 Cotizar Automatización
                 <ArrowRight className="h-4 w-4" />
               </Link>
+            ) : slug === "chatbots" ? (
+              <button
+                type="button"
+                onClick={() => {
+                  window.dispatchEvent(
+                    new CustomEvent("open-sourbot", {
+                      detail: { message: "Hola, me gustaría probar la demo de Chatbots IA" }
+                    })
+                  );
+                }}
+                className="inline-flex h-14 min-w-[180px] items-center justify-center gap-2 rounded-full border border-yellow-400/50 bg-yellow-400 px-6 text-sm font-semibold text-zinc-950 transition hover:bg-yellow-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.4)] cursor-pointer"
+              >
+                Probar Demo Chatbot
+                <ArrowRight className="h-4 w-4" />
+              </button>
             ) : (
               <button
                 type="button"
@@ -375,7 +478,7 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
           </section>
         )}
 
-        {slug !== "automatizaciones" && (
+        {slug !== "automatizaciones" && slug !== "chatbots" && (
           <section className="grid gap-4 lg:grid-cols-12">
             {caseData.overviewCards.map((card, index) => (
               <article
@@ -398,97 +501,103 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
           </section>
         )}
 
-        {slug === "automatizaciones" && (
-          <section className="space-y-12">
-            <div className="space-y-3">
-              <p className="text-xs uppercase tracking-[0.35em] text-yellow-300 font-mono">Casos de Éxito</p>
-              <h2 className="text-3xl font-semibold text-zinc-50 font-mono">Automatizaciones Empresariales</h2>
-              <p className="max-w-2xl text-sm text-zinc-400 leading-relaxed">
-                Ejemplos reales de cómo optimizamos procesos repetitivos de oficina y ventas, eliminando cuellos de botella y potenciando el rendimiento de los equipos.
-              </p>
-            </div>
+        {(slug === "automatizaciones" || slug === "chatbots") && (() => {
+          const cases = slug === "chatbots" ? chatbotCases : automationCases;
+          const sectionTitle = slug === "chatbots" ? "Asistentes de IA" : "Automatizaciones Empresariales";
+          const sectionSubtitle = slug === "chatbots" ? "Casos de Uso" : "Casos de Éxito";
+          const sectionDesc = slug === "chatbots" 
+            ? "Ejemplos de cómo implementamos agentes conversacionales y bots de soporte para optimizar la comunicación y captar oportunidades 24/7."
+            : "Ejemplos reales de cómo optimizamos procesos repetitivos de oficina y ventas, eliminando cuellos de botella y potenciando el rendimiento de los equipos.";
+          const currentCase = cases.find((c) => c.id === activeTab) || cases[0];
+          const AlertIcon = getIconComponent("AlertTriangle");
+          const ZapIcon = getIconComponent("Zap");
+          const CpuIcon = getIconComponent("Cpu");
 
-            {/* Bento-style Tab Selectors - Horizontal Swipeable on Mobile */}
-            <div className="flex overflow-x-auto gap-3 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-4 lg:gap-4 lg:pb-0">
-              {automationCases.map((item) => {
-                const IconComponent = getIconComponent(item.icon);
-                const isActive = activeTab === item.id;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setActiveTab(item.id)}
-                    className={`group text-left rounded-3xl border p-5 sm:p-6 transition duration-300 flex flex-col justify-between min-h-[140px] sm:min-h-[160px] min-w-[260px] sm:min-w-[280px] lg:min-w-0 shrink-0 snap-center cursor-pointer ${
-                      isActive
-                        ? "border-yellow-400 bg-yellow-400/[0.03] shadow-[0_0_20px_rgba(250,204,21,0.15)]"
-                        : "border-white/10 bg-white/[0.02] hover:border-yellow-400/40 hover:bg-white/[0.04]"
-                    }`}
-                  >
-                    <div className="flex items-start justify-between w-full">
-                      <div className={`p-2.5 sm:p-3 rounded-2xl transition duration-300 ${
-                        isActive ? "bg-yellow-400/10 text-yellow-300" : "bg-white/5 text-zinc-400 group-hover:text-zinc-200"
-                      }`}>
-                        <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
-                      </div>
-                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">
-                        Caso 0{automationCases.indexOf(item) + 1}
-                      </span>
-                    </div>
+          return (
+            <section className="space-y-12">
+              <div className="space-y-3">
+                <p className="text-xs uppercase tracking-[0.35em] text-yellow-300 font-mono">{sectionSubtitle}</p>
+                <h2 className="text-3xl font-semibold text-zinc-50 font-mono">{sectionTitle}</h2>
+                <p className="max-w-2xl text-sm text-zinc-400 leading-relaxed">
+                  {sectionDesc}
+                </p>
+              </div>
 
-                    <div className="mt-4">
-                      <h3 className={`text-sm sm:text-base font-semibold font-mono leading-tight ${isActive ? "text-yellow-300" : "text-zinc-100"}`}>
-                        {item.title}
-                      </h3>
-                      <p className="text-[10px] sm:text-[11px] text-zinc-400 mt-1 leading-snug line-clamp-1">
-                        {item.subtitle}
-                      </p>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Selected Tab Detail with Framer Motion Transition */}
-            <AnimatePresence mode="wait">
-              {(() => {
-                const currentCase = automationCases.find((c) => c.id === activeTab) || automationCases[0];
-                const AlertIcon = getIconComponent("AlertTriangle");
-                const ZapIcon = getIconComponent("Zap");
-                const CpuIcon = getIconComponent("Cpu");
-
-                return (
-                  <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.25 }}
-                    className="grid gap-6 lg:gap-8 lg:grid-cols-12 items-stretch mt-6 sm:mt-10"
-                  >
-                    {/* Left: Problema vs Solución & Tools */}
-                    <div className="lg:col-span-5 flex flex-col justify-between gap-6">
-                      <div className="space-y-6">
-                        {/* Problema */}
-                        <div className="rounded-2xl border border-red-500/10 bg-red-500/[0.02] p-5 sm:p-6 space-y-3">
-                          <div className="flex items-center gap-2 text-red-400">
-                            <AlertIcon className="h-5 w-5" />
-                            <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">El Problema Operativo (Antes)</h3>
-                          </div>
-                          <p className="text-sm text-zinc-300 leading-relaxed">{currentCase.problem}</p>
+              {/* Bento-style Tab Selectors - Horizontal Swipeable on Mobile */}
+              <div className="flex overflow-x-auto gap-3 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-4 lg:gap-4 lg:pb-0">
+                {cases.map((item) => {
+                  const IconComponent = getIconComponent(item.icon);
+                  const isActive = activeTab === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setActiveTab(item.id)}
+                      className={`group text-left rounded-3xl border p-5 sm:p-6 transition duration-300 flex flex-col justify-between min-h-[140px] sm:min-h-[160px] min-w-[260px] sm:min-w-[280px] lg:min-w-0 shrink-0 snap-center cursor-pointer ${
+                        isActive
+                          ? "border-yellow-400 bg-yellow-400/[0.03] shadow-[0_0_20px_rgba(250,204,21,0.15)]"
+                          : "border-white/10 bg-white/[0.02] hover:border-yellow-400/40 hover:bg-white/[0.04]"
+                      }`}
+                    >
+                      <div className="flex items-start justify-between w-full">
+                        <div className={`p-2.5 sm:p-3 rounded-2xl transition duration-300 ${
+                          isActive ? "bg-yellow-400/10 text-yellow-300" : "bg-white/5 text-zinc-400 group-hover:text-zinc-200"
+                        }`}>
+                          <IconComponent className="h-5 w-5 sm:h-6 sm:w-6" />
                         </div>
-
-                        {/* Solución */}
-                        <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.02] p-5 sm:p-6 space-y-3">
-                          <div className="flex items-center gap-2 text-emerald-400">
-                            <ZapIcon className="h-5 w-5" />
-                            <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">La Solución SOURDEV (Después)</h3>
-                          </div>
-                          <p className="text-sm text-zinc-300 leading-relaxed">{currentCase.solution}</p>
-                        </div>
+                        <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500">
+                          Caso 0{cases.indexOf(item) + 1}
+                        </span>
                       </div>
 
-                      {/* Herramientas */}
-                      <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-5 sm:p-6 space-y-4">
+                      <div className="mt-4">
+                        <h3 className={`text-sm sm:text-base font-semibold font-mono leading-tight ${isActive ? "text-yellow-300" : "text-zinc-100"}`}>
+                          {item.title}
+                        </h3>
+                        <p className="text-[10px] sm:text-[11px] text-zinc-400 mt-1 leading-snug line-clamp-1">
+                          {item.subtitle}
+                        </p>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Selected Tab Detail with Framer Motion Transition */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.25 }}
+                  className="grid gap-6 lg:gap-8 lg:grid-cols-12 items-stretch mt-6 sm:mt-10"
+                >
+                  {/* Left: Problema vs Solución & Tools */}
+                  <div className="lg:col-span-5 flex flex-col justify-between gap-6">
+                    <div className="space-y-6">
+                      {/* Problema */}
+                      <div className="rounded-2xl border border-red-500/10 bg-red-500/[0.02] p-5 sm:p-6 space-y-3">
+                        <div className="flex items-center gap-2 text-red-400">
+                          <AlertIcon className="h-5 w-5" />
+                          <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">El Problema Operativo (Antes)</h3>
+                        </div>
+                        <p className="text-sm text-zinc-300 leading-relaxed">{currentCase.problem}</p>
+                      </div>
+
+                      {/* Solución */}
+                      <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.02] p-5 sm:p-6 space-y-3">
+                        <div className="flex items-center gap-2 text-emerald-400">
+                          <ZapIcon className="h-5 w-5" />
+                          <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">La Solución SOURDEV (Después)</h3>
+                        </div>
+                        <p className="text-sm text-zinc-300 leading-relaxed">{currentCase.solution}</p>
+                      </div>
+                    </div>
+
+                    {/* Herramientas */}
+                    <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-5 sm:p-6 space-y-4 flex flex-col justify-between">
+                      <div className="space-y-4">
                         <div className="flex items-center gap-2 text-zinc-300">
                           <CpuIcon className="h-5 w-5" />
                           <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">Herramientas Conectadas</h3>
@@ -504,67 +613,84 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                           ))}
                         </div>
                       </div>
+
+                      {slug === "chatbots" && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            window.dispatchEvent(
+                              new CustomEvent("open-sourbot", {
+                                detail: { message: `Hola, me interesa probar el chatbot de: ${currentCase.title}` }
+                              })
+                            );
+                          }}
+                          className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400 hover:text-zinc-950 font-semibold font-mono text-xs uppercase tracking-wider transition duration-300 cursor-pointer"
+                        >
+                          Probar Asistente
+                          <Icons.MessageSquare className="h-4 w-4" />
+                        </button>
+                      )}
                     </div>
+                  </div>
 
-                    {/* Right: Flujo de Trabajo & ROI */}
-                    <div className="lg:col-span-7 flex flex-col justify-between gap-6">
-                      {/* Flujo de Trabajo */}
-                      <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-5 sm:p-6 md:p-8 space-y-6 flex-1">
-                        <div className="space-y-1">
-                          <span className="text-xs uppercase tracking-[0.25em] text-yellow-300 font-mono">El Proceso Automatizado</span>
-                          <h3 className="text-lg sm:text-xl font-semibold text-zinc-50 font-mono">¿Cómo funciona paso a paso?</h3>
-                        </div>
-
-                        <div className="relative space-y-6 sm:space-y-8 mt-6">
-                          {/* Vertical line connecting steps - perfectly aligned with left-3 */}
-                          <div className="absolute left-3 top-2 bottom-2 w-[1px] bg-gradient-to-b from-yellow-400 via-yellow-400/25 to-transparent" />
-
-                          {currentCase.flow.map((step) => (
-                            <div key={step.step} className="relative pl-8 flex flex-col gap-1 group">
-                              {/* Step marker - centered at left-3 */}
-                              <div className="absolute left-3 -translate-x-1/2 top-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-zinc-950 border border-yellow-400 text-[10px] font-mono font-bold text-yellow-300 shadow-[0_0_8px_rgba(250,204,21,0.2)]">
-                                {step.step}
-                              </div>
-
-                              <h4 className="text-xs sm:text-sm font-semibold text-zinc-100 font-mono leading-none pl-1">
-                                {step.title}
-                              </h4>
-                              <p className="text-[11px] sm:text-xs text-zinc-400 leading-relaxed pl-1">
-                                {step.desc}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
+                  {/* Right: Flujo de Trabajo & ROI */}
+                  <div className="lg:col-span-7 flex flex-col justify-between gap-6">
+                    {/* Flujo de Trabajo */}
+                    <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-5 sm:p-6 md:p-8 space-y-6 flex-1">
+                      <div className="space-y-1">
+                        <span className="text-xs uppercase tracking-[0.25em] text-yellow-300 font-mono">El Proceso Automatizado</span>
+                        <h3 className="text-lg sm:text-xl font-semibold text-zinc-50 font-mono">¿Cómo funciona paso a paso?</h3>
                       </div>
 
-                      {/* ROI / Métricas - Optimized 3-Column Grid */}
-                      <div className="grid gap-2 sm:gap-4 grid-cols-3">
-                        {currentCase.roi.map((metric) => (
-                          <div
-                            key={metric.label}
-                            className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 sm:p-5 flex flex-col justify-between min-h-[90px] sm:min-h-[120px]"
-                          >
-                            <span className="text-[8px] sm:text-[10px] font-mono uppercase tracking-wider text-zinc-400 leading-tight">
-                              {metric.label}
-                            </span>
-                            <div>
-                              <div className="text-xl sm:text-3xl font-bold font-mono text-yellow-300 leading-none">
-                                {metric.value}
-                              </div>
-                              <p className="text-[9px] sm:text-[10px] text-zinc-500 mt-1 sm:mt-2 leading-tight hidden xs:block">
-                                {metric.desc}
-                              </p>
+                      <div className="relative space-y-6 sm:space-y-8 mt-6">
+                        {/* Vertical line connecting steps - perfectly aligned with left-3 */}
+                        <div className="absolute left-3 top-2 bottom-2 w-[1px] bg-gradient-to-b from-yellow-400 via-yellow-400/25 to-transparent" />
+
+                        {currentCase.flow.map((step) => (
+                          <div key={step.step} className="relative pl-8 flex flex-col gap-1 group">
+                            {/* Step marker - centered at left-3 */}
+                            <div className="absolute left-3 -translate-x-1/2 top-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-zinc-950 border border-yellow-400 text-[10px] font-mono font-bold text-yellow-300 shadow-[0_0_8px_rgba(250,204,21,0.2)]">
+                              {step.step}
                             </div>
+
+                            <h4 className="text-xs sm:text-sm font-semibold text-zinc-100 font-mono leading-none pl-1">
+                              {step.title}
+                            </h4>
+                            <p className="text-[11px] sm:text-xs text-zinc-400 leading-relaxed pl-1">
+                              {step.desc}
+                            </p>
                           </div>
                         ))}
                       </div>
                     </div>
-                  </motion.div>
-                );
-              })()}
-            </AnimatePresence>
-          </section>
-        )}
+
+                    {/* ROI / Métricas - Optimized 3-Column Grid */}
+                    <div className="grid gap-2 sm:gap-4 grid-cols-3">
+                      {currentCase.roi.map((metric) => (
+                        <div
+                          key={metric.label}
+                          className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 sm:p-5 flex flex-col justify-between min-h-[90px] sm:min-h-[120px]"
+                        >
+                          <span className="text-[8px] sm:text-[10px] font-mono uppercase tracking-wider text-zinc-400 leading-tight">
+                            {metric.label}
+                          </span>
+                          <div>
+                            <div className="text-xl sm:text-3xl font-bold font-mono text-yellow-300 leading-none">
+                              {metric.value}
+                            </div>
+                            <p className="text-[9px] sm:text-[10px] text-zinc-500 mt-1 sm:mt-2 leading-tight hidden xs:block">
+                              {metric.desc}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </section>
+          );
+        })()}
 
         {slug === "comandas" && (
           <section className="space-y-8">
@@ -642,7 +768,7 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
           </section>
         )}
 
-        {slug !== "automatizaciones" && (
+        {slug !== "automatizaciones" && slug !== "chatbots" && (
           <section className="space-y-6">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div className="space-y-2">
@@ -729,7 +855,7 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
           </section>
         )}
 
-        {slug !== "automatizaciones" && (
+        {slug !== "automatizaciones" && slug !== "chatbots" && (
           <section className="grid gap-3 md:grid-cols-3">
             {caseData.benefits.map((benefit) => (
               <article

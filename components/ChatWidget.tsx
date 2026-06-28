@@ -10,6 +10,13 @@ interface ChatMessage {
     media?: string;
 }
 
+const SUGGESTIONS = [
+    "¿Cómo funciona un agente de IA?",
+    "¿Qué integraciones hacen con WhatsApp?",
+    "Cotizar un chatbot personalizado",
+    "Ver demos de automatizaciones"
+];
+
 export default function ChatWidget() {
     const [mounted, setMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
@@ -50,6 +57,33 @@ export default function ChatWidget() {
         }
         setSessionId(id);
     }, []);
+
+    // Custom Event Listener to open chat automatically
+    useEffect(() => {
+        const handleOpenChat = (event: any) => {
+            setIsOpen(true);
+            if (event.detail?.message) {
+                const text = event.detail.message.trim();
+                if (!text) return;
+                
+                // If there's a pre-defined message, wait a bit and send it
+                setTimeout(() => {
+                    setMessages(prev => [...prev, { role: "user", text }]);
+                    setIsTyping(true);
+                    const socket = socketRef.current;
+                    if (socket && socket.readyState === WebSocket.OPEN) {
+                        socket.send(JSON.stringify({
+                            action: "message",
+                            text,
+                            sessionId
+                        }));
+                    }
+                }, 300);
+            }
+        };
+        window.addEventListener("open-sourbot", handleOpenChat);
+        return () => window.removeEventListener("open-sourbot", handleOpenChat);
+    }, [sessionId]);
 
     // Visual Viewport tracking for mobile keyboard adjustments
     useEffect(() => {
@@ -233,6 +267,26 @@ export default function ChatWidget() {
         }
     };
 
+    const handleSuggestionClick = (suggestionText: string) => {
+        setMessages(prev => [...prev, { role: "user", text: suggestionText }]);
+        setIsTyping(true);
+
+        const socket = socketRef.current;
+        if (socket && socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify({
+                action: "message",
+                text: suggestionText,
+                sessionId
+            }));
+        } else {
+            setIsTyping(false);
+            setMessages(prev => [...prev, { 
+                role: "system", 
+                text: "No se pudo enviar el mensaje: Conexión con el servidor desconectada." 
+            }]);
+        }
+    };
+
     if (!mounted) return null;
 
     return (
@@ -348,6 +402,24 @@ export default function ChatWidget() {
                                     </div>
                                 );
                             })}
+
+                            {/* Suggestion Pills */}
+                            {messages.length === 1 && !isTyping && (
+                                <div className="flex flex-col gap-2 pt-2">
+                                    <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-mono pl-1">Preguntas recomendadas:</span>
+                                    <div className="flex flex-col gap-1.5">
+                                        {SUGGESTIONS.map((suggestion) => (
+                                            <button
+                                                key={suggestion}
+                                                onClick={() => handleSuggestionClick(suggestion)}
+                                                className="w-full text-left rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/5 hover:border-yellow-400/40 px-3 py-2 text-xs text-zinc-300 font-mono transition duration-200 cursor-pointer"
+                                            >
+                                                {suggestion}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
                             {/* Typing Indicator */}
                             {isTyping && (
