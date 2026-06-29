@@ -23,12 +23,12 @@ export default function ContactPage() {
         </section>
 
         {/* Sección de tarjetas de contacto */}
-        <section className="rounded-none border-2 border-[#787772] bg-zinc-950 p-6 shadow-[8px_8px_0px_0px_#facc15] sm:p-10">
+        <section className="rounded-3xl border-2 border-zinc-800 bg-zinc-950/50 backdrop-blur-xl p-6 shadow-[8px_8px_0px_0px_rgba(250,204,21,0.15)] sm:p-10">
           <div className="grid gap-5">
             
             {/* Contenedor de Información (Grid para poner correo y teléfono lado a lado en pantallas grandes) */}
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="group rounded-none border-2 border-white/10 bg-zinc-900/40 p-5 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.03)] hover:border-yellow-400 hover:shadow-[4px_4px_0px_0px_#facc15]">
+              <div className="group rounded-2xl border-2 border-zinc-800 bg-zinc-950/60 p-5 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(250,204,21,0.03)] hover:border-yellow-400 hover:shadow-[5px_5px_0px_0px_rgba(250,204,21,0.6)]">
                 <p className="text-[10px] font-mono font-semibold uppercase tracking-[0.35em] text-zinc-500">
                   Correo
                 </p>
@@ -37,7 +37,7 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              <div className="group rounded-none border-2 border-white/10 bg-zinc-900/40 p-5 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.03)] hover:border-yellow-400 hover:shadow-[4px_4px_0px_0px_#facc15]">
+              <div className="group rounded-2xl border-2 border-zinc-800 bg-zinc-950/60 p-5 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(250,204,21,0.03)] hover:border-yellow-400 hover:shadow-[5px_5px_0px_0px_rgba(250,204,21,0.6)]">
                 <p className="text-[10px] font-mono font-semibold uppercase tracking-[0.35em] text-zinc-500">
                   WhatsApp
                 </p>
@@ -47,7 +47,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-none border-2 border-white/10 bg-zinc-900/40 p-5 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.03)] hover:border-yellow-400 hover:shadow-[4px_4px_0px_0px_#facc15]">
+            <div className="rounded-2xl border-2 border-zinc-800 bg-zinc-950/60 p-5 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(250,204,21,0.03)] hover:border-yellow-400 hover:shadow-[5px_5px_0px_0px_rgba(250,204,21,0.6)]">
               <p className="text-[10px] font-mono font-semibold uppercase tracking-[0.35em] text-zinc-500">
                 Respuesta
               </p>
@@ -61,7 +61,7 @@ export default function ContactPage() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex w-full items-center justify-center rounded-none border-2 border-black bg-yellow-400 px-8 py-4 text-sm font-mono font-black uppercase tracking-wider text-zinc-950 transition-all shadow-[6px_6px_0px_0px_#ffffff] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_#ffffff] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+              className="mt-4 inline-flex w-full items-center justify-center rounded-2xl border-2 border-black bg-yellow-400 px-8 py-4 text-sm font-mono font-black uppercase tracking-wider text-zinc-950 transition-all shadow-[4px_4px_0px_0px_#ffffff] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_0px_#ffffff] active:translate-y-[1px] active:shadow-none"
             >
               Escribir ahora por WhatsApp
             </a>

@@ -51,7 +51,7 @@ export default function ServicesPage() {
             <Link
               key={service.title}
               href={`/servicios/${service.slug}`}
-              className={`group relative overflow-hidden rounded-none border-2 border-[#787772] bg-zinc-950 p-6 transition-all duration-300 shadow-[6px_6px_0px_0px_#facc15] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_#facc15] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${service.span}`}
+              className={`group relative overflow-hidden rounded-2xl border-2 border-zinc-800 bg-zinc-950/50 backdrop-blur-xl p-6 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(250,204,21,0.05)] hover:-translate-y-1 hover:border-yellow-400 hover:shadow-[6px_6px_0px_0px_rgba(250,204,21,1)] active:translate-y-0 active:translate-x-[2px] active:shadow-none ${service.span}`}
             >
               <div className="absolute inset-0 opacity-95">
                 <Image
@@ -66,8 +66,8 @@ export default function ServicesPage() {
               </div>
               <div className="relative flex h-full min-h-[190px] flex-col justify-between gap-6">
                 <div className="flex items-start justify-between gap-4">
-                  <service.icon className="h-12 w-12 shrink-0 text-yellow-300 border-2 border-[#787772] p-2 bg-zinc-900 shadow-[3px_3px_0px_0px_rgba(250,204,21,0.25)] transition duration-300" />
-                  <span className="border-2 border-zinc-700 bg-zinc-950 px-2.5 py-0.5 text-xs font-mono font-black tracking-wider text-zinc-400 rounded-none shadow-[2px_2px_0px_0px_rgba(255,255,255,0.05)]">
+                  <service.icon className="h-12 w-12 shrink-0 text-yellow-300 border-2 border-zinc-800 p-2 bg-zinc-950/80 shadow-[3px_3px_0px_0px_rgba(250,204,21,0.2)] transition duration-300 group-hover:border-yellow-400 group-hover:shadow-[3px_3px_0px_0px_rgba(250,204,21,0.4)]" />
+                  <span className="border-2 border-zinc-800 bg-zinc-950/85 px-2.5 py-0.5 text-xs font-mono font-bold tracking-wider text-zinc-400 rounded-lg shadow-[2px_2px_0px_0px_rgba(255,255,255,0.02)]">
                     0{index + 1}
                   </span>
                 </div>

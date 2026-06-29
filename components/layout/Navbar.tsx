@@ -47,12 +47,12 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-white bg-zinc-950 shadow-[0_4px_0px_0px_rgba(255,255,255,0.05)]">
+    <header className="sticky top-0 z-50 border-b-2 border-white/10 bg-zinc-950/80 backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         
         {/* Logo */}
         <Link href="/" className="group inline-flex items-center gap-3 z-50">
-          <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-none border-2 border-yellow-400 bg-zinc-950 flex items-center justify-center transition shadow-[3px_3px_0px_0px_#facc15] group-hover:bg-yellow-400/10">
+          <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl border-2 border-yellow-400 bg-yellow-400/5 flex items-center justify-center transition shadow-[3px_3px_0px_0px_rgba(250,204,21,0.3)] group-hover:bg-yellow-400/15">
             <Image
               src="/favicon.ico"
               alt="SOURDEV"
@@ -72,12 +72,12 @@ export function Navbar() {
         </Link>
 
         {/* Navegación Desktop */}
-        <nav className="hidden items-center gap-1.5 rounded-none border-2 border-white/20 bg-zinc-950 px-2 py-1.5 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.08)] lg:flex">
+        <nav className="hidden items-center gap-1.5 rounded-full border-2 border-white/10 bg-zinc-950/50 px-4 py-1.5 backdrop-blur-xl shadow-[4px_4px_0px_0px_rgba(255,255,255,0.05)] lg:flex">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-none px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 transition hover:bg-white/5 hover:text-yellow-300"
+              className="rounded-full px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 transition hover:bg-white/5 hover:text-yellow-300"
             >
               {link.label}
             </Link>
@@ -88,7 +88,7 @@ export function Navbar() {
         <div className="flex items-center gap-3 z-50">
           <Link
             href="/contacto"
-            className="hidden sm:inline-flex items-center justify-center rounded-none border-2 border-black bg-yellow-400 px-5 py-2 text-xs font-mono font-black uppercase tracking-wider text-zinc-950 transition-all shadow-[3px_3px_0px_0px_#ffffff] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_0px_#ffffff] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none lg:inline-flex"
+            className="hidden sm:inline-flex items-center justify-center rounded-full border-2 border-black bg-yellow-400 px-5 py-2 text-xs font-mono font-black uppercase tracking-wider text-zinc-950 transition-all shadow-[3px_3px_0px_0px_rgba(255,255,255,0.8)] hover:translate-y-[-1px] active:translate-y-[1px] lg:inline-flex"
           >
             Agendar
           </Link>
@@ -96,7 +96,7 @@ export function Navbar() {
           {/* Toggle Menú Móvil Animado con Framer Motion */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-none border-2 border-white/20 bg-zinc-950 text-zinc-300 transition shadow-[3px_3px_0px_0px_rgba(255,255,255,0.08)] hover:bg-white/5 lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/10 bg-zinc-950 text-zinc-300 transition shadow-[3px_3px_0px_0px_rgba(255,255,255,0.08)] hover:bg-white/5 lg:hidden"
             aria-label="Abrir menú"
           >
             <motion.div
@@ -117,7 +117,7 @@ export function Navbar() {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="absolute left-0 top-full w-full overflow-hidden border-b-2 border-white bg-zinc-950 shadow-[0_6px_0px_0px_rgba(250,204,21,0.2)] lg:hidden"
+            className="absolute left-0 top-full w-full overflow-hidden border-b-2 border-white/10 bg-zinc-950/95 backdrop-blur-xl lg:hidden"
           >
             <nav className="flex flex-col gap-3 px-4 py-6">
               {links.map((link) => (
@@ -125,7 +125,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-between rounded-none border-2 border-white/10 bg-zinc-900/50 p-4 text-sm font-mono font-bold uppercase tracking-wider text-zinc-300 transition hover:border-yellow-400 hover:text-yellow-300 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.05)]"
+                    className="flex items-center justify-between rounded-xl border-2 border-white/10 bg-zinc-900/50 p-4 text-sm font-mono font-bold uppercase tracking-wider text-zinc-300 transition hover:border-yellow-400 hover:text-yellow-300 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.03)]"
                   >
                     {link.label}
                   </Link>
@@ -136,7 +136,7 @@ export function Navbar() {
                 <Link
                   href="/contacto"
                   onClick={() => setIsOpen(false)}
-                  className="mt-2 flex w-full items-center justify-center rounded-none border-2 border-black bg-yellow-400 p-4 text-sm font-mono font-black uppercase tracking-wider text-zinc-950 transition-all shadow-[4px_4px_0px_0px_#ffffff] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0px_0px_#ffffff] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none sm:hidden"
+                  className="mt-2 flex w-full items-center justify-center rounded-xl border-2 border-black bg-yellow-400 p-4 text-sm font-mono font-black uppercase tracking-wider text-zinc-950 transition-all shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)] hover:translate-y-[-1px] active:translate-y-[1px] sm:hidden"
                 >
                   Agendar Consultoría
                 </Link>
