@@ -23,7 +23,7 @@ export default function ContactPage() {
         </section>
 
         {/* Sección de tarjetas de contacto */}
-        <section className="rounded-none border-2 border-white bg-zinc-950 p-6 shadow-[8px_8px_0px_0px_#facc15] sm:p-10">
+        <section className="rounded-none border-2 border-[#787772] bg-zinc-950 p-6 shadow-[8px_8px_0px_0px_#facc15] sm:p-10">
           <div className="grid gap-5">
             
             {/* Contenedor de Información (Grid para poner correo y teléfono lado a lado en pantallas grandes) */}
