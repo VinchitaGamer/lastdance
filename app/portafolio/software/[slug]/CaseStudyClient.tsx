@@ -798,7 +798,7 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                           </div>
 
                           {/* Selector de Estilos de UI */}
-                          <div className="rounded-2xl border border-white/5 bg-zinc-900/20 p-5 sm:p-6 space-y-4">
+                          <div className="hidden lg:block rounded-2xl border border-white/5 bg-zinc-900/20 p-5 sm:p-6 space-y-4">
                             <div className="flex items-center gap-2 text-yellow-300">
                               <CpuIcon className="h-4 w-4" />
                               <h3 className="font-mono text-[10px] uppercase tracking-wider font-semibold">Interactuar con Estilos UI</h3>
@@ -854,7 +854,7 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                       {/* Right side: Live CSS/UI Render Demo container */}
                       <div className="lg:col-span-7 flex flex-col justify-between gap-6">
                         {/* Selected UI Style Card Render Frame */}
-                        <div className="rounded-[2rem] border border-white/10 bg-zinc-950 p-6 sm:p-8 flex flex-col justify-center items-center relative min-h-[360px] flex-1">
+                        <div className="rounded-[2rem] border border-white/10 bg-zinc-950 p-6 sm:p-8 flex flex-col justify-center items-center relative min-h-[460px] flex-1">
                           <div className="absolute top-4 left-6 flex items-center gap-1.5 text-[9px] font-mono text-zinc-500 uppercase tracking-widest">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                             <span>Render en Vivo ({activeUiStyle})</span>
@@ -864,9 +864,9 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                           {(() => {
                             const cardContent = webPreviewCards[activeTab as keyof typeof webPreviewCards] as any;
                             return (
-                              <div className={`w-full max-w-[340px] p-6 space-y-5 transition-all duration-500 ${uiStyles[activeUiStyle].css.card}`}>
+                              <div className={`w-full max-w-[460px] p-8 sm:p-10 space-y-6 sm:space-y-8 transition-all duration-500 ${uiStyles[activeUiStyle].css.card}`}>
                                 <div className="flex items-center justify-between">
-                                  <span className={`px-2.5 py-0.5 text-[9px] font-semibold tracking-wider uppercase font-mono ${uiStyles[activeUiStyle].css.badge}`}>
+                                  <span className={`px-2.5 py-0.5 text-[10px] font-semibold tracking-wider uppercase font-mono ${uiStyles[activeUiStyle].css.badge}`}>
                                     {cardContent.badge}
                                   </span>
                                   <div className="flex gap-1.5">
@@ -876,14 +876,14 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                                   </div>
                                 </div>
 
-                                <div className="space-y-1">
-                                  <h4 className="text-base font-bold tracking-tight text-zinc-100">{cardContent.title}</h4>
-                                  <p className="text-xs text-zinc-400 leading-snug">{cardContent.subtitle}</p>
+                                <div className="space-y-1.5">
+                                  <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-100">{cardContent.title}</h4>
+                                  <p className="text-xs sm:text-sm text-zinc-400 leading-normal">{cardContent.subtitle}</p>
                                 </div>
 
                                 {/* Conditionally Render fields based on layout details */}
                                 {cardContent.hasInput && (
-                                  <div className="space-y-1.5">
+                                  <div className="space-y-2">
                                     <label className="text-[9px] uppercase tracking-wider text-zinc-500 font-mono font-semibold block">
                                       {cardContent.inputLabel}
                                     </label>
@@ -891,26 +891,26 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                                       type="email"
                                       disabled
                                       placeholder={cardContent.inputPlaceholder}
-                                      className={`w-full px-3 py-1.5 text-xs outline-none transition duration-300 ${uiStyles[activeUiStyle].css.input}`}
+                                      className={`w-full px-4 py-2.5 text-xs sm:text-sm outline-none transition duration-300 ${uiStyles[activeUiStyle].css.input}`}
                                     />
                                   </div>
                                 )}
 
                                 {cardContent.isProduct && (
                                   <div className="flex items-center justify-between pt-1">
-                                    <span className="text-zinc-500 text-xs font-mono">Precio:</span>
-                                    <span className="text-yellow-300 font-mono font-bold text-base">{cardContent.price}</span>
+                                    <span className="text-zinc-500 text-xs sm:text-sm font-mono">Precio:</span>
+                                    <span className="text-yellow-300 font-mono font-bold text-xl sm:text-2xl">{cardContent.price}</span>
                                   </div>
                                 )}
 
                                 {cardContent.isDashboard && (
-                                  <div className="space-y-2 pt-1">
-                                    <div className="flex justify-between items-end text-xs font-mono">
-                                      <span className="text-zinc-100 font-bold">{cardContent.metricValue}</span>
-                                      <span className="text-emerald-400 text-[10px]">{cardContent.metricLabel}</span>
+                                  <div className="space-y-3 pt-1">
+                                    <div className="flex justify-between items-end text-xs sm:text-sm font-mono">
+                                      <span className="text-zinc-100 font-bold text-xl sm:text-2xl">{cardContent.metricValue}</span>
+                                      <span className="text-emerald-400 text-xs">{cardContent.metricLabel}</span>
                                     </div>
                                     {/* Styled progress bar */}
-                                    <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                    <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
                                       <div 
                                         className="h-full bg-yellow-400 transition-all duration-500" 
                                         style={{ width: `${cardContent.progressBar}%` }} 
@@ -922,15 +922,50 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                                 <div className="pt-2">
                                   <button
                                     type="button"
-                                    className={`w-full py-2 text-xs font-semibold uppercase tracking-wider transition duration-300 flex items-center justify-center gap-1.5 ${uiStyles[activeUiStyle].css.button}`}
+                                    className={`w-full py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider transition duration-300 flex items-center justify-center gap-2 ${uiStyles[activeUiStyle].css.button}`}
                                   >
                                     {cardContent.buttonText}
-                                    <ArrowRight className="h-3 w-3" />
+                                    <ArrowRight className="h-4 w-4" />
                                   </button>
                                 </div>
                               </div>
                             );
                           })()}
+                        </div>
+
+                        {/* Mobile UI Style Selector (hidden on desktop) */}
+                        <div className="lg:hidden rounded-2xl border border-white/5 bg-zinc-900/20 p-5 space-y-4">
+                          <div className="flex items-center gap-2 text-yellow-300">
+                            <CpuIcon className="h-4 w-4" />
+                            <h3 className="font-mono text-[10px] uppercase tracking-wider font-semibold">Interactuar con Estilos UI</h3>
+                          </div>
+                          
+                          {/* Horizontal swipeable buttons for mobile view */}
+                          <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-none sm:grid sm:grid-cols-5">
+                            {Object.keys(uiStyles).map((styleKey) => {
+                              const style = uiStyles[styleKey as keyof typeof uiStyles];
+                              const isSelected = activeUiStyle === styleKey;
+                              return (
+                                <button
+                                  key={styleKey}
+                                  type="button"
+                                  onClick={() => setActiveUiStyle(styleKey as any)}
+                                  className="px-3 py-2 rounded-xl text-left text-[10px] font-mono font-semibold transition shrink-0 bg-white/5 text-zinc-300 hover:bg-white/10"
+                                  style={isSelected ? {
+                                    backgroundColor: "#facc15",
+                                    color: "#09090b",
+                                    boxShadow: "0 0 12px rgba(250,204,21,0.25)"
+                                  } : {}}
+                                >
+                                  {style.title.split(" (")[0]}
+                                </button>
+                              );
+                            })}
+                          </div>
+
+                          <p className="text-[11px] text-zinc-400 leading-relaxed italic border-t border-white/5 pt-3">
+                            {uiStyles[activeUiStyle].description}
+                          </p>
                         </div>
                       </div>
                     </>
