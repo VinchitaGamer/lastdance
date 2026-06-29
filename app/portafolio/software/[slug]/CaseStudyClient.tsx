@@ -852,9 +852,9 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                       </div>
 
                       {/* Right side: Live CSS/UI Render Demo container */}
-                      <div className="lg:col-span-7 flex flex-col justify-between gap-6">
+                      <div className="lg:col-span-7 flex flex-col justify-between gap-6 w-full max-w-full overflow-hidden">
                         {/* Selected UI Style Card Render Frame */}
-                        <div className="rounded-[2rem] border border-white/10 bg-zinc-950 p-6 sm:p-8 flex flex-col justify-center items-center relative min-h-[460px] flex-1">
+                        <div className="w-full max-w-full rounded-[2rem] border border-white/10 bg-zinc-950 p-4 sm:p-8 flex flex-col justify-center items-center relative min-h-[400px] sm:min-h-[460px] flex-1 overflow-hidden">
                           <div className="absolute top-4 left-6 flex items-center gap-1.5 text-[9px] font-mono text-zinc-500 uppercase tracking-widest">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                             <span>Render en Vivo ({activeUiStyle})</span>
@@ -864,7 +864,7 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                           {(() => {
                             const cardContent = webPreviewCards[activeTab as keyof typeof webPreviewCards] as any;
                             return (
-                              <div className={`w-full max-w-[460px] p-8 sm:p-10 space-y-6 sm:space-y-8 transition-all duration-500 ${uiStyles[activeUiStyle].css.card}`}>
+                              <div className={`w-full max-w-[440px] p-5 sm:p-8 md:p-10 space-y-5 sm:space-y-8 transition-all duration-500 ${uiStyles[activeUiStyle].css.card}`}>
                                 <div className="flex items-center justify-between">
                                   <span className={`px-2.5 py-0.5 text-[10px] font-semibold tracking-wider uppercase font-mono ${uiStyles[activeUiStyle].css.badge}`}>
                                     {cardContent.badge}
@@ -877,8 +877,8 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                                 </div>
 
                                 <div className="space-y-1.5">
-                                  <h4 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-100">{cardContent.title}</h4>
-                                  <p className="text-xs sm:text-sm text-zinc-400 leading-normal">{cardContent.subtitle}</p>
+                                  <h4 className="text-lg sm:text-2xl font-bold tracking-tight text-zinc-100">{cardContent.title}</h4>
+                                  <p className="text-[11px] sm:text-sm text-zinc-400 leading-normal">{cardContent.subtitle}</p>
                                 </div>
 
                                 {/* Conditionally Render fields based on layout details */}
