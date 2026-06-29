@@ -208,6 +208,182 @@ const chatbotCases = [
   }
 ];
 
+const webCases = [
+  {
+    id: "landing",
+    title: "Landing Page",
+    subtitle: "Conversión de Campañas (Marketing)",
+    description: "Página de aterrizaje optimizada para una sola acción de conversión (registro o contacto), eliminando distracciones para maximizar el ROI de tus campañas de anuncios.",
+    icon: "LayoutGrid",
+    problem: "Las campañas de marketing digital redirigían el tráfico al sitio corporativo general de la empresa. Los visitantes se perdían entre las pestañas y el 97% abandonaba el sitio sin registrarse ni contactar.",
+    solution: "Diseñamos una landing page enfocada exclusivamente en un servicio estrella. Estructura de arriba a abajo con propuesta de valor clara, prueba social, formulario integrado de 3 campos y llamada a la acción de alto impacto.",
+    tools: ["React / Next.js", "Tailwind CSS", "Framer Motion", "Meta Pixel", "Google Analytics"],
+    flow: [
+      { step: "1", title: "Tráfico de Anuncios", desc: "El usuario hace clic en una campaña publicitaria en redes sociales o Google." },
+      { step: "2", title: "Propuesta de Valor", desc: "Aterriza y ve un encabezado de alto impacto con un beneficio claro en menos de 3 segundos." },
+      { step: "3", title: "Prueba Social", desc: "Ve testimonios y logotipos de clientes para eliminar la desconfianza." },
+      { step: "4", title: "Llamada a la Acción", desc: "Completa el formulario de conversión directa que se conecta con el CRM." }
+    ],
+    roi: [
+      { label: "Tasa de Conversión", value: "8.5%", desc: "Antes era del 1.2% en el sitio corporativo general." },
+      { label: "Costo por Lead", value: "-45%", desc: "Reducción del costo de adquisición gracias a la conversión." },
+      { label: "Carga de Página", value: "0.8s", desc: "Velocidad premium para evitar rebote móvil." }
+    ]
+  },
+  {
+    id: "corporativo",
+    title: "Sitio Corporativo",
+    subtitle: "Imagen de Marca y Confianza (Institucional)",
+    description: "Sitio web multi-página premium para presentar la historia, servicios, catálogo y valores de tu empresa con una estética impecable que acelera la confianza del cliente.",
+    icon: "Globe2",
+    problem: "La empresa tenía un sitio web desactualizado, difícil de leer en celulares y sin coherencia de marca, lo que proyectaba una imagen informal ante clientes corporativos de alto valor.",
+    solution: "Desarrollamos un sitio institucional moderno, totalmente responsivo y optimizado para buscadores (SEO). Incluye blog de contenidos, sección de portafolio, y conexiones directas a WhatsApp y correo institucional.",
+    tools: ["Next.js App Router", "Vanilla CSS", "TypeScript", "Sanity CMS", "Nginx"],
+    flow: [
+      { step: "1", title: "Búsqueda en Google", desc: "El prospecto encuentra el sitio corporativo gracias a la optimización SEO." },
+      { step: "2", title: "Navegación de Servicios", desc: "Explora las secciones de portafolio, quiénes somos y servicios de forma fluida." },
+      { step: "3", title: "Validación de Confianza", desc: "Revisa los casos de éxito anteriores y el equipo detrás de la empresa." },
+      { step: "4", title: "Contacto Corporativo", desc: "Envía una solicitud formal de cotización a través de un formulario estructurado." }
+    ],
+    roi: [
+      { label: "Visitas Orgánicas", value: "+120%", desc: "Incremento continuo de tráfico gracias a SEO." },
+      { label: "Tiempo de Sesión", value: "3.5 min", desc: "Los usuarios navegan más páginas debido a la experiencia fluida." },
+      { label: "Confianza de Marca", value: "Alta", desc: "Percepción corporativa profesional y moderna." }
+    ]
+  },
+  {
+    id: "ecommerce",
+    title: "E-commerce",
+    subtitle: "Tienda Online de Alto Rendimiento (Ventas)",
+    description: "Tienda virtual optimizada con carga instantánea, catálogo interactivo, filtros fluidos y pasarelas de pago integradas para una experiencia de compra sin fricciones.",
+    icon: "ShoppingBag",
+    problem: "La tienda online en plantillas genéricas tardaba más de 5 segundos en cargar en móviles. Los usuarios se frustraban en el carrito de compras y el 80% abandonaba la web.",
+    solution: "Construimos un e-commerce headless rápido. Los productos cargan al instante, los filtros de búsqueda funcionan en milisegundos y el checkout está integrado en un solo paso con Stripe.",
+    tools: ["Next.js", "Shopify API", "Stripe", "Tailwind CSS", "Algolia Search"],
+    flow: [
+      { step: "1", title: "Carga de Productos", desc: "El usuario abre la tienda y ve las imágenes optimizadas al instante." },
+      { step: "2", title: "Filtro Rápido", desc: "Encuentra el artículo deseado en milisegundos usando filtros dinámicos." },
+      { step: "3", title: "Añadir al Carrito", desc: "Agrega productos y ve el resumen del carrito flotante sin recargar la página." },
+      { step: "4", title: "Pago Integrado", desc: "Completa el pago de forma segura en un checkout optimizado de un solo paso." }
+    ],
+    roi: [
+      { label: "Carga Web Móvil", value: "0.9s", desc: "Reducción del 80% en tiempos de espera." },
+      { label: "Conversión de Compra", value: "+28%", desc: "Más pedidos completados exitosamente." },
+      { label: "Carritos Abandonados", value: "-35%", desc: "Menor abandono gracias al checkout rápido." }
+    ]
+  },
+  {
+    id: "webapp",
+    title: "Aplicación Web (PWA)",
+    subtitle: "Interactividad y Procesos Complejos (Software)",
+    description: "Plataformas web con bases de datos dinámicas, control de usuarios y flujos lógicos complejos (como CRM, ERP o SaaS) instalables en celulares.",
+    icon: "MonitorSmartphone",
+    problem: "El cliente dependía de plantillas rígidas de Excel y procesos de backoffice manuales que causaban duplicidad de datos, pérdida de archivos e imposibilidad de trabajar en equipo de forma remota.",
+    solution: "Desarrollamos una plataforma web a medida con base de datos en tiempo real, gestión de roles de usuario, tableros interactivos y alertas. Funciona como una PWA instalable sin pasar por App Stores.",
+    tools: ["React / Next.js", "Node.js / Express", "PostgreSQL / Prisma", "Tailwind CSS", "PWA Manifest"],
+    flow: [
+      { step: "1", title: "Acceso y Roles", desc: "El empleado o cliente inicia sesión de forma segura según sus permisos asignados." },
+      { step: "2", title: "Tablero Central", desc: "Visualiza de forma interactiva el estatus de sus tareas, ventas o pedidos." },
+      { step: "3", title: "Procesamiento de Datos", desc: "Interactúa con formularios, filtros avanzados y realiza descargas de reportes." },
+      { step: "4", title: "Sincronización Total", desc: "Cualquier cambio se refleja inmediatamente para el resto del equipo en tiempo real." }
+    ],
+    roi: [
+      { label: "Eficiencia Interna", value: "+50%", desc: "Aceleración de procesos y reducción de trabajo repetitivo." },
+      { label: "Pérdida de Información", value: "0%", desc: "Bases de datos centralizadas en la nube con backups diarios." },
+      { label: "Tiempo de Adopción", value: "< 2 días", desc: "Plataforma intuitiva y fácil de usar por el personal." }
+    ]
+  }
+];
+
+const uiStyles = {
+  glassmorphism: {
+    title: "Glassmorphism (Efecto Vidrio)",
+    description: "Estilo moderno y translúcido que simula vidrio esmerilado. Utiliza transparencias, bordes finos de alto contraste y desenfoque de fondo. Muy utilizado en macOS, Windows 11 e interfaces web premium.",
+    css: {
+      card: "bg-white/[0.03] border border-white/10 backdrop-blur-xl rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)]",
+      button: "bg-white/10 hover:bg-white/20 border border-white/20 text-zinc-50 rounded-xl shadow-none",
+      input: "bg-white/5 border border-white/10 text-zinc-200 placeholder-zinc-500 rounded-lg focus:border-white/30",
+      badge: "bg-yellow-400/20 text-yellow-300 border border-yellow-400/30 rounded-full",
+    }
+  },
+  neomorphism: {
+    title: "Neomorphism (Diseño Físico)",
+    description: "Combina sombras claras y oscuras para simular elementos extruidos físicamente que 'sobresalen' o se 'hunden' en el fondo. Posee una estética industrial, suave y sumamente táctil.",
+    css: {
+      card: "bg-[#18181b] border-none rounded-[2.5rem] shadow-[10px_10px_25px_rgba(0,0,0,0.6),-8px_-8px_25px_rgba(255,255,255,0.02)]",
+      button: "bg-[#18181b] hover:bg-[#1f1f23] text-yellow-300 rounded-2xl shadow-[6px_6px_12px_rgba(0,0,0,0.4),-4px_-4px_12px_rgba(255,255,255,0.015)] active:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.5),inset_-4px_-4px_8px_rgba(255,255,255,0.01)] border-none",
+      input: "bg-[#141416] text-zinc-300 placeholder-zinc-600 rounded-xl shadow-[inset_4px_4px_8px_rgba(0,0,0,0.5),inset_-3px_-3px_8px_rgba(255,255,255,0.005)] border-none",
+      badge: "bg-[#18181b] text-yellow-400/90 rounded-lg shadow-[inset_2px_2px_5px_rgba(0,0,0,0.4),2px_2px_5px_rgba(255,255,255,0.01)]",
+    }
+  },
+  claymorphism: {
+    title: "Claymorphism (Efecto Arcilla)",
+    description: "Evolución del neumorfismo que combina bordes extremadamente redondeados, sombras externas marcadas e iluminaciones internas 3D. El resultado simula figuras blandas 3D de arcilla o plástico.",
+    css: {
+      card: "bg-zinc-800 border-none rounded-[3rem] shadow-[0_20px_40px_rgba(0,0,0,0.4),inset_6px_6px_12px_rgba(255,255,255,0.05),inset_-8px_-8px_16px_rgba(0,0,0,0.3)]",
+      button: "bg-yellow-400 hover:bg-yellow-300 text-zinc-950 rounded-[1.5rem] shadow-[0_8px_16px_rgba(250,204,21,0.2),inset_3px_3px_6px_rgba(255,255,255,0.4),inset_-4px_-4px_8px_rgba(0,0,0,0.15)] border-none font-bold",
+      input: "bg-zinc-900 text-zinc-100 placeholder-zinc-500 rounded-[1rem] shadow-[inset_-3px_-3px_6px_rgba(255,255,255,0.02),inset_4px_4px_8px_rgba(0,0,0,0.4)] border-none",
+      badge: "bg-purple-500 text-purple-100 rounded-full shadow-[0_4px_10px_rgba(168,85,247,0.3),inset_2px_2px_4px_rgba(255,255,255,0.3)]",
+    }
+  },
+  minimalist: {
+    title: "Minimalist (Minimalismo Suizo)",
+    description: "Foco absoluto en la tipografía sans-serif/monospace, el alto contraste y el espacio en blanco. Elimina sombras, gradientes y decoraciones irrelevantes. Menos es más.",
+    css: {
+      card: "bg-black border border-white rounded-none shadow-none font-mono",
+      button: "bg-white hover:bg-zinc-200 text-black border border-white rounded-none shadow-none font-mono uppercase font-bold",
+      input: "bg-black border border-zinc-700 focus:border-white text-white placeholder-zinc-600 rounded-none font-mono",
+      badge: "bg-black border border-zinc-700 text-zinc-400 rounded-none font-mono",
+    }
+  },
+  maximalist: {
+    title: "Maximalist (Neon Brutalism)",
+    description: "Diseño audaz y ruidoso. Emplea colores neón saturados, sombras planas gruesas de estilo cómic, tipografía pesada en mayúsculas y bordes gruesos negros. Ideal para marcas jóvenes y disruptivas.",
+    css: {
+      card: "bg-zinc-900 border-4 border-yellow-300 rounded-none shadow-[8px_8px_0px_rgba(250,204,21,1)] font-mono",
+      button: "bg-yellow-300 hover:bg-yellow-200 text-black border-2 border-black rounded-none shadow-[4px_4px_0px_rgba(255,255,255,1)] active:translate-x-1 active:translate-y-1 active:shadow-none font-black uppercase text-xs",
+      input: "bg-black border-2 border-yellow-300 text-yellow-300 placeholder-yellow-300/40 rounded-none font-mono",
+      badge: "bg-purple-500 border-2 border-black text-black font-black rounded-none shadow-[2px_2px_0px_rgba(0,0,0,1)] uppercase text-[10px]",
+    }
+  }
+};
+
+const webPreviewCards = {
+  landing: {
+    badge: "Oferta Especial",
+    title: "Agente IA SourDev",
+    subtitle: "Aprende a automatizar tus ventas con inteligencia artificial hoy mismo.",
+    inputLabel: "Correo Corporativo",
+    inputPlaceholder: "nombre@empresa.com",
+    buttonText: "Acceder a Demo",
+    hasInput: true,
+  },
+  corporativo: {
+    badge: "Agencia de Software",
+    title: "Desarrollo Next.js",
+    subtitle: "Creamos portales corporativos rápidos, seguros y preparados para posicionarse en Google.",
+    buttonText: "Nuestros Servicios",
+    hasInput: false,
+  },
+  ecommerce: {
+    badge: "Más Vendido",
+    title: "Auriculares SoundMax",
+    subtitle: "Cancelación de ruido activa y 40 horas de reproducción de audio continua.",
+    price: "499 Bs.",
+    buttonText: "Comprar Ahora",
+    isProduct: true,
+  },
+  webapp: {
+    badge: "Métricas CRM",
+    title: "Leads Calificados",
+    metricValue: "1,248 leads",
+    metricLabel: "+24.5% este mes",
+    progressBar: 75,
+    buttonText: "Ver Reporte Completo",
+    isDashboard: true,
+  }
+};
+
 const getIconComponent = (iconName: string) => {
   const Icon = (Icons as any)[iconName];
   return Icon || Icons.HelpCircle;
@@ -249,10 +425,17 @@ interface CaseStudyClientProps {
 export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps) {
   const [activeShotIndex, setActiveShotIndex] = useState<number | null>(null);
   const [activeRole, setActiveRole] = useState<"mesero" | "cocina" | "admin">("mesero");
-  const [activeTab, setActiveTab] = useState<string>("leads");
+  const [activeTab, setActiveTab] = useState<string>(() => {
+    return slug === "paginas-web" ? "landing" : "leads";
+  });
+  const [activeUiStyle, setActiveUiStyle] = useState<"glassmorphism" | "neomorphism" | "claymorphism" | "minimalist" | "maximalist">("glassmorphism");
 
   useEffect(() => {
-    setActiveTab("leads");
+    if (slug === "paginas-web") {
+      setActiveTab("landing");
+    } else {
+      setActiveTab("leads");
+    }
   }, [slug]);
 
   useEffect(() => {
@@ -501,13 +684,31 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
           </section>
         )}
 
-        {(slug === "automatizaciones" || slug === "chatbots") && (() => {
-          const cases = slug === "chatbots" ? chatbotCases : automationCases;
-          const sectionTitle = slug === "chatbots" ? "Asistentes de IA" : "Automatizaciones Empresariales";
-          const sectionSubtitle = slug === "chatbots" ? "Casos de Uso" : "Casos de Éxito";
-          const sectionDesc = slug === "chatbots" 
-            ? "Ejemplos de cómo implementamos agentes conversacionales y bots de soporte para optimizar la comunicación y captar oportunidades 24/7."
-            : "Ejemplos reales de cómo optimizamos procesos repetitivos de oficina y ventas, eliminando cuellos de botella y potenciando el rendimiento de los equipos.";
+        {(slug === "automatizaciones" || slug === "chatbots" || slug === "paginas-web") && (() => {
+          const cases = 
+            slug === "chatbots" 
+              ? chatbotCases 
+              : slug === "automatizaciones" 
+              ? automationCases 
+              : webCases;
+          const sectionTitle = 
+            slug === "chatbots" 
+              ? "Asistentes de IA" 
+              : slug === "automatizaciones" 
+              ? "Automatizaciones Empresariales" 
+              : "Desarrollo y Estilos Web";
+          const sectionSubtitle = 
+            slug === "chatbots" 
+              ? "Casos de Uso" 
+              : slug === "automatizaciones" 
+              ? "Casos de Éxito" 
+              : "Tipos y Estilos UI";
+          const sectionDesc = 
+            slug === "chatbots" 
+              ? "Ejemplos de cómo implementamos agentes conversacionales y bots de soporte para optimizar la comunicación y captar oportunidades 24/7."
+              : slug === "automatizaciones"
+              ? "Ejemplos reales de cómo optimizamos procesos repetitivos de oficina y ventas, eliminando cuellos de botella y potenciando el rendimiento de los equipos."
+              : "Explora la diferencia entre landing pages, sitios corporativos y aplicaciones web, junto con una demostración interactiva de estilos de diseño visual.";
           const currentCase = cases.find((c) => c.id === activeTab) || cases[0];
           const AlertIcon = getIconComponent("AlertTriangle");
           const ZapIcon = getIconComponent("Zap");
@@ -573,68 +774,230 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                   transition={{ duration: 0.25 }}
                   className="grid gap-6 lg:gap-8 lg:grid-cols-12 items-stretch mt-6 sm:mt-10"
                 >
-                  {/* Left: Problema vs Solución & Tools */}
-                  <div className="lg:col-span-5 flex flex-col justify-between gap-6">
-                    <div className="space-y-6">
-                      {/* Problema */}
-                      <div className="rounded-2xl border border-red-500/10 bg-red-500/[0.02] p-5 sm:p-6 space-y-3">
-                        <div className="flex items-center gap-2 text-red-400">
-                          <AlertIcon className="h-5 w-5" />
-                          <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">El Problema Operativo (Antes)</h3>
+                  {slug === "paginas-web" ? (
+                    <>
+                      {/* Left side: Problema vs Solución & Tools & UI Style Selector */}
+                      <div className="lg:col-span-5 flex flex-col justify-between gap-6">
+                        <div className="space-y-6">
+                          {/* Problema */}
+                          <div className="rounded-2xl border border-red-500/10 bg-red-500/[0.02] p-5 sm:p-6 space-y-2">
+                            <div className="flex items-center gap-2 text-red-400">
+                              <AlertIcon className="h-4 w-4" />
+                              <h3 className="font-mono text-[10px] uppercase tracking-wider font-semibold">El Problema de Negocio</h3>
+                            </div>
+                            <p className="text-xs text-zinc-300 leading-relaxed">{currentCase.problem}</p>
+                          </div>
+
+                          {/* Solución */}
+                          <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.02] p-5 sm:p-6 space-y-2">
+                            <div className="flex items-center gap-2 text-emerald-400">
+                              <ZapIcon className="h-4 w-4" />
+                              <h3 className="font-mono text-[10px] uppercase tracking-wider font-semibold">Solución SOURDEV</h3>
+                            </div>
+                            <p className="text-xs text-zinc-300 leading-relaxed">{currentCase.solution}</p>
+                          </div>
+
+                          {/* Selector de Estilos de UI */}
+                          <div className="rounded-2xl border border-white/5 bg-zinc-900/20 p-5 sm:p-6 space-y-4">
+                            <div className="flex items-center gap-2 text-yellow-300">
+                              <CpuIcon className="h-4 w-4" />
+                              <h3 className="font-mono text-[10px] uppercase tracking-wider font-semibold">Interactuar con Estilos UI</h3>
+                            </div>
+                            
+                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-2">
+                              {Object.keys(uiStyles).map((styleKey) => {
+                                const style = uiStyles[styleKey as keyof typeof uiStyles];
+                                const isSelected = activeUiStyle === styleKey;
+                                return (
+                                  <button
+                                    key={styleKey}
+                                    type="button"
+                                    onClick={() => setActiveUiStyle(styleKey as any)}
+                                    className="px-3 py-2 rounded-xl text-left text-[10px] font-mono font-semibold transition cursor-pointer bg-white/5 text-zinc-300 hover:bg-white/10"
+                                    style={isSelected ? {
+                                      backgroundColor: "#facc15",
+                                      color: "#09090b",
+                                      boxShadow: "0 0 12px rgba(250,204,21,0.25)"
+                                    } : {}}
+                                  >
+                                    {style.title.split(" (")[0]}
+                                  </button>
+                                );
+                              })}
+                            </div>
+
+                            <p className="text-[11px] text-zinc-400 leading-relaxed italic border-t border-white/5 pt-3">
+                              {uiStyles[activeUiStyle].description}
+                            </p>
+                          </div>
                         </div>
-                        <p className="text-sm text-zinc-300 leading-relaxed">{currentCase.problem}</p>
+
+                        {/* Herramientas */}
+                        <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-5 sm:p-6 space-y-3">
+                          <div className="flex items-center gap-2 text-zinc-300">
+                            <CpuIcon className="h-4 w-4" />
+                            <h3 className="font-mono text-[10px] uppercase tracking-wider font-semibold">Tecnologías</h3>
+                          </div>
+                          <div className="flex flex-wrap gap-1.5">
+                            {currentCase.tools.map((tool) => (
+                              <span
+                                key={tool}
+                                className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[10px] text-zinc-300 font-mono"
+                              >
+                                {tool}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Solución */}
-                      <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.02] p-5 sm:p-6 space-y-3">
-                        <div className="flex items-center gap-2 text-emerald-400">
-                          <ZapIcon className="h-5 w-5" />
-                          <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">La Solución SOURDEV (Después)</h3>
-                        </div>
-                        <p className="text-sm text-zinc-300 leading-relaxed">{currentCase.solution}</p>
-                      </div>
-                    </div>
+                      {/* Right side: Live CSS/UI Render Demo container */}
+                      <div className="lg:col-span-7 flex flex-col justify-between gap-6">
+                        {/* Selected UI Style Card Render Frame */}
+                        <div className="rounded-[2rem] border border-white/10 bg-zinc-950 p-6 sm:p-8 flex flex-col justify-center items-center relative min-h-[360px] flex-1">
+                          <div className="absolute top-4 left-6 flex items-center gap-1.5 text-[9px] font-mono text-zinc-500 uppercase tracking-widest">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                            <span>Render en Vivo ({activeUiStyle})</span>
+                          </div>
 
-                    {/* Herramientas */}
-                    <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-5 sm:p-6 space-y-4 flex flex-col justify-between">
-                      <div className="space-y-4">
-                        <div className="flex items-center gap-2 text-zinc-300">
-                          <CpuIcon className="h-5 w-5" />
-                          <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">Herramientas Conectadas</h3>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {currentCase.tools.map((tool) => (
-                            <span
-                              key={tool}
-                              className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1 text-xs text-zinc-300 font-mono"
-                            >
-                              {tool}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                          {/* Dynamic Card based on activeUiStyle CSS and activeTab content */}
+                          {(() => {
+                            const cardContent = webPreviewCards[activeTab as keyof typeof webPreviewCards] as any;
+                            return (
+                              <div className={`w-full max-w-[340px] p-6 space-y-5 transition-all duration-500 ${uiStyles[activeUiStyle].css.card}`}>
+                                <div className="flex items-center justify-between">
+                                  <span className={`px-2.5 py-0.5 text-[9px] font-semibold tracking-wider uppercase font-mono ${uiStyles[activeUiStyle].css.badge}`}>
+                                    {cardContent.badge}
+                                  </span>
+                                  <div className="flex gap-1.5">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+                                  </div>
+                                </div>
 
-                      {slug === "chatbots" && (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            window.dispatchEvent(
-                              new CustomEvent("open-sourbot", {
-                                detail: { message: `Hola, me interesa probar el chatbot de: ${currentCase.title}` }
-                              })
+                                <div className="space-y-1">
+                                  <h4 className="text-base font-bold tracking-tight text-zinc-100">{cardContent.title}</h4>
+                                  <p className="text-xs text-zinc-400 leading-snug">{cardContent.subtitle}</p>
+                                </div>
+
+                                {/* Conditionally Render fields based on layout details */}
+                                {cardContent.hasInput && (
+                                  <div className="space-y-1.5">
+                                    <label className="text-[9px] uppercase tracking-wider text-zinc-500 font-mono font-semibold block">
+                                      {cardContent.inputLabel}
+                                    </label>
+                                    <input
+                                      type="email"
+                                      disabled
+                                      placeholder={cardContent.inputPlaceholder}
+                                      className={`w-full px-3 py-1.5 text-xs outline-none transition duration-300 ${uiStyles[activeUiStyle].css.input}`}
+                                    />
+                                  </div>
+                                )}
+
+                                {cardContent.isProduct && (
+                                  <div className="flex items-center justify-between pt-1">
+                                    <span className="text-zinc-500 text-xs font-mono">Precio:</span>
+                                    <span className="text-yellow-300 font-mono font-bold text-base">{cardContent.price}</span>
+                                  </div>
+                                )}
+
+                                {cardContent.isDashboard && (
+                                  <div className="space-y-2 pt-1">
+                                    <div className="flex justify-between items-end text-xs font-mono">
+                                      <span className="text-zinc-100 font-bold">{cardContent.metricValue}</span>
+                                      <span className="text-emerald-400 text-[10px]">{cardContent.metricLabel}</span>
+                                    </div>
+                                    {/* Styled progress bar */}
+                                    <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                      <div 
+                                        className="h-full bg-yellow-400 transition-all duration-500" 
+                                        style={{ width: `${cardContent.progressBar}%` }} 
+                                      />
+                                    </div>
+                                  </div>
+                                )}
+
+                                <div className="pt-2">
+                                  <button
+                                    type="button"
+                                    className={`w-full py-2 text-xs font-semibold uppercase tracking-wider transition duration-300 flex items-center justify-center gap-1.5 ${uiStyles[activeUiStyle].css.button}`}
+                                  >
+                                    {cardContent.buttonText}
+                                    <ArrowRight className="h-3 w-3" />
+                                  </button>
+                                </div>
+                              </div>
                             );
-                          }}
-                          className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400 hover:text-zinc-950 font-semibold font-mono text-xs uppercase tracking-wider transition duration-300 cursor-pointer"
-                        >
-                          Probar Asistente
-                          <Icons.MessageSquare className="h-4 w-4" />
-                        </button>
-                      )}
-                    </div>
-                  </div>
+                          })()}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Left: Problema vs Solución & Tools */}
+                      <div className="lg:col-span-5 flex flex-col justify-between gap-6">
+                        <div className="space-y-6">
+                          {/* Problema */}
+                          <div className="rounded-2xl border border-red-500/10 bg-red-500/[0.02] p-5 sm:p-6 space-y-3">
+                            <div className="flex items-center gap-2 text-red-400">
+                              <AlertIcon className="h-5 w-5" />
+                              <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">El Problema Operativo (Antes)</h3>
+                            </div>
+                            <p className="text-sm text-zinc-300 leading-relaxed">{currentCase.problem}</p>
+                          </div>
 
-                  {/* Right: Flujo de Trabajo & ROI */}
-                  <div className="lg:col-span-7 flex flex-col justify-between gap-6">
+                          {/* Solución */}
+                          <div className="rounded-2xl border border-emerald-500/10 bg-emerald-500/[0.02] p-5 sm:p-6 space-y-3">
+                            <div className="flex items-center gap-2 text-emerald-400">
+                              <ZapIcon className="h-5 w-5" />
+                              <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">La Solución SOURDEV (Después)</h3>
+                            </div>
+                            <p className="text-sm text-zinc-300 leading-relaxed">{currentCase.solution}</p>
+                          </div>
+                        </div>
+
+                        {/* Herramientas */}
+                        <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-5 sm:p-6 space-y-4 flex flex-col justify-between">
+                          <div className="space-y-4">
+                            <div className="flex items-center gap-2 text-zinc-300">
+                              <CpuIcon className="h-5 w-5" />
+                              <h3 className="font-mono text-xs uppercase tracking-wider font-semibold">Herramientas Conectadas</h3>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {currentCase.tools.map((tool) => (
+                                <span
+                                  key={tool}
+                                  className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1 text-xs text-zinc-300 font-mono"
+                                >
+                                  {tool}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          {slug === "chatbots" && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                window.dispatchEvent(
+                                  new CustomEvent("open-sourbot", {
+                                    detail: { message: `Hola, me interesa probar el chatbot de: ${currentCase.title}` }
+                                  })
+                                );
+                              }}
+                              className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-yellow-400/30 bg-yellow-400/10 text-yellow-300 hover:bg-yellow-400 hover:text-zinc-950 font-semibold font-mono text-xs uppercase tracking-wider transition duration-300 cursor-pointer"
+                            >
+                              Probar Asistente
+                              <Icons.MessageSquare className="h-4 w-4" />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Right: Flujo de Trabajo & ROI */}
+                      <div className="lg:col-span-7 flex flex-col justify-between gap-6">
                     {/* Flujo de Trabajo */}
                     <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-5 sm:p-6 md:p-8 space-y-6 flex-1">
                       <div className="space-y-1">
@@ -686,7 +1049,9 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </>
+              )}
+            </motion.div>
               </AnimatePresence>
             </section>
           );
@@ -768,7 +1133,7 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
           </section>
         )}
 
-        {slug !== "automatizaciones" && slug !== "chatbots" && (
+        {slug !== "automatizaciones" && slug !== "chatbots" && slug !== "paginas-web" && (
           <section className="space-y-6">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div className="space-y-2">

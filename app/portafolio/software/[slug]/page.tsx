@@ -269,23 +269,7 @@ const softwareCases = {
         icon: "FileClock",
       },
     ],
-    shots: [
-      {
-        title: "Landing premium",
-        text: "Diseño enfocado en conversión.",
-        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
-      },
-      {
-        title: "Sitio corporativo",
-        text: "Estructura limpia y elegante.",
-        image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=80",
-      },
-      {
-        title: "Interfaz responsive",
-        text: "Experiencia visual en todos los dispositivos.",
-        image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1600&q=80",
-      },
-    ],
+    shots: [],
     icon: "Globe2",
   },
 } as const;
