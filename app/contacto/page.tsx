@@ -23,35 +23,35 @@ export default function ContactPage() {
         </section>
 
         {/* Sección de tarjetas de contacto */}
-        <section className="rounded-[2.5rem] border border-white/5 bg-zinc-900/40 p-6 shadow-2xl backdrop-blur-xl sm:p-10">
+        <section className="rounded-none border-2 border-white bg-zinc-950 p-6 shadow-[8px_8px_0px_0px_#facc15] sm:p-10">
           <div className="grid gap-5">
             
             {/* Contenedor de Información (Grid para poner correo y teléfono lado a lado en pantallas grandes) */}
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="group rounded-2xl border border-white/5 bg-zinc-950/50 p-5 transition-colors hover:bg-zinc-900/80">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-zinc-500">
+              <div className="group rounded-none border-2 border-white/10 bg-zinc-900/40 p-5 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.03)] hover:border-yellow-400 hover:shadow-[4px_4px_0px_0px_#facc15]">
+                <p className="text-[10px] font-mono font-semibold uppercase tracking-[0.35em] text-zinc-500">
                   Correo
                 </p>
-                <p className="mt-3 text-base font-medium text-yellow-300 transition-colors group-hover:text-yellow-200">
+                <p className="mt-3 text-sm font-mono font-bold text-yellow-300 transition-colors group-hover:text-yellow-200">
                   sourdev.inf@gmail.com
                 </p>
               </div>
 
-              <div className="group rounded-2xl border border-white/5 bg-zinc-950/50 p-5 transition-colors hover:bg-zinc-900/80">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-zinc-500">
+              <div className="group rounded-none border-2 border-white/10 bg-zinc-900/40 p-5 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.03)] hover:border-yellow-400 hover:shadow-[4px_4px_0px_0px_#facc15]">
+                <p className="text-[10px] font-mono font-semibold uppercase tracking-[0.35em] text-zinc-500">
                   WhatsApp
                 </p>
-                <p className="mt-3 text-base font-medium text-yellow-300 transition-colors group-hover:text-yellow-200">
+                <p className="mt-3 text-sm font-mono font-bold text-yellow-300 transition-colors group-hover:text-yellow-200">
                   +591 68079141
                 </p>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/5 bg-zinc-950/50 p-5 transition-colors hover:bg-zinc-900/80">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-zinc-500">
+            <div className="rounded-none border-2 border-white/10 bg-zinc-900/40 p-5 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(255,255,255,0.03)] hover:border-yellow-400 hover:shadow-[4px_4px_0px_0px_#facc15]">
+              <p className="text-[10px] font-mono font-semibold uppercase tracking-[0.35em] text-zinc-500">
                 Respuesta
               </p>
-              <p className="mt-3 text-base font-medium text-yellow-300">
+              <p className="mt-3 text-sm font-mono font-bold text-yellow-300">
                 En menos de 24 horas
               </p>
             </div>
@@ -61,7 +61,7 @@ export default function ContactPage() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex w-full items-center justify-center rounded-2xl bg-yellow-400 px-8 py-4 text-sm font-bold tracking-wide text-zinc-950 transition-all hover:scale-[1.02] hover:bg-yellow-300 active:scale-[0.98] shadow-[0_0_30px_-10px_rgba(250,204,21,0.25)]"
+              className="mt-4 inline-flex w-full items-center justify-center rounded-none border-2 border-black bg-yellow-400 px-8 py-4 text-sm font-mono font-black uppercase tracking-wider text-zinc-950 transition-all shadow-[6px_6px_0px_0px_#ffffff] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_#ffffff] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
             >
               Escribir ahora por WhatsApp
             </a>

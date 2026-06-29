@@ -52,7 +52,7 @@ export default function PortfolioPage() {
             <Link
               key={item.title}
               href={item.href}
-              className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-900 p-5 transition duration-300 hover:border-yellow-400 hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]"
+              className="group relative overflow-hidden rounded-none border-2 border-white bg-zinc-950 p-6 transition-all duration-300 shadow-[6px_6px_0px_0px_#facc15] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_#facc15] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
             >
               <div className="absolute inset-0">
                 <Image
@@ -60,30 +60,30 @@ export default function PortfolioPage() {
                   alt={item.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover opacity-28 transition duration-500 group-hover:scale-105 group-hover:opacity-38"
+                  className="object-cover opacity-20 transition duration-500 group-hover:scale-105 group-hover:opacity-30"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 via-zinc-950/60 to-zinc-950/92" />
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-zinc-950/75 to-zinc-950/95" />
               </div>
 
               <div className="relative flex h-full flex-col justify-between gap-6">
                 <div className="flex items-start justify-between gap-4">
-                  <item.icon className="h-11 w-11 text-yellow-300 drop-shadow-[0_0_16px_rgba(250,204,21,0.5)]" />
-                  <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-xs uppercase tracking-[0.3em] text-zinc-400">
+                  <item.icon className="h-12 w-12 text-yellow-300 border-2 border-white p-2 bg-zinc-900 shadow-[3px_3px_0px_0px_rgba(250,204,21,0.25)] transition duration-300" />
+                  <span className="border-2 border-zinc-700 bg-zinc-950 px-2.5 py-0.5 text-xs font-mono font-black tracking-wider text-zinc-400 rounded-none shadow-[2px_2px_0px_0px_rgba(255,255,255,0.05)]">
                     0{index + 1}
                   </span>
                 </div>
 
                 <div className="max-w-2xl space-y-3">
-                  <h2 className="text-2xl font-semibold text-zinc-50 sm:text-3xl">{item.title}</h2>
-                  <p className="max-w-xl text-sm leading-7 text-zinc-300 sm:text-base">{item.text}</p>
+                  <h2 className="text-2xl font-bold text-zinc-50 sm:text-3xl uppercase font-mono tracking-tight">{item.title}</h2>
+                  <p className="max-w-xl text-xs text-zinc-400 leading-relaxed font-mono">{item.text}</p>
                 </div>
 
-                <div className="w-full rounded-2xl border border-white/10 bg-zinc-950/55 p-4 backdrop-blur-xl">
+                <div className="w-full rounded-none border-2 border-white bg-zinc-900/80 p-4 shadow-[4px_4px_0px_0px_rgba(250,204,21,0.2)] transition group-hover:bg-yellow-400 group-hover:text-black">
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-xs uppercase tracking-[0.35em] text-yellow-300">
+                    <span className="text-xs font-mono font-bold uppercase tracking-[0.35em] text-yellow-300 group-hover:text-black">
                       Caso de estudio
                     </span>
-                    <ArrowUpRight className="h-4 w-4 text-yellow-300" />
+                    <ArrowUpRight className="h-4 w-4 text-yellow-300 group-hover:text-black transition duration-300" />
                   </div>
                 </div>
               </div>

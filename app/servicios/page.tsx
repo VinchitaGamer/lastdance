@@ -51,7 +51,7 @@ export default function ServicesPage() {
             <Link
               key={service.title}
               href={`/servicios/${service.slug}`}
-              className={`group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-neutral-900 p-5 transition duration-300 hover:-translate-y-1 hover:border-yellow-400/30 hover:shadow-[0_0_0_1px_rgba(250,204,21,0.12),0_0_32px_rgba(250,204,21,0.12)] ${service.span}`}
+              className={`group relative overflow-hidden rounded-none border-2 border-white bg-zinc-950 p-6 transition-all duration-300 shadow-[6px_6px_0px_0px_#facc15] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_#facc15] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${service.span}`}
             >
               <div className="absolute inset-0 opacity-95">
                 <Image
@@ -59,22 +59,21 @@ export default function ServicesPage() {
                   alt={service.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="scale-105 object-cover opacity-35 blur-[1.5px] saturate-150 transition duration-500 group-hover:opacity-50 group-hover:scale-110"
+                  className="scale-105 object-cover opacity-25 blur-[1px] saturate-150 transition duration-500 group-hover:opacity-40 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-zinc-950/72 via-zinc-950/58 to-zinc-950/82" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(250,204,21,0.18),_transparent_36%)] opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-950/80 via-zinc-950/65 to-zinc-950/90" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(250,204,21,0.15),_transparent_36%)] opacity-100" />
               </div>
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(250,204,21,0.12),_transparent_35%)] opacity-0 transition duration-300 group-hover:opacity-100" />
               <div className="relative flex h-full min-h-[190px] flex-col justify-between gap-6">
                 <div className="flex items-start justify-between gap-4">
-                  <service.icon className="h-11 w-11 shrink-0 text-yellow-300 transition duration-300 group-hover:drop-shadow-[0_0_18px_rgba(250,204,21,0.65)]" />
-                  <span className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.3em] text-zinc-400">
+                  <service.icon className="h-12 w-12 shrink-0 text-yellow-300 border-2 border-white p-2 bg-zinc-900 shadow-[3px_3px_0px_0px_rgba(250,204,21,0.25)] transition duration-300" />
+                  <span className="border-2 border-zinc-700 bg-zinc-950 px-2.5 py-0.5 text-xs font-mono font-black tracking-wider text-zinc-400 rounded-none shadow-[2px_2px_0px_0px_rgba(255,255,255,0.05)]">
                     0{index + 1}
                   </span>
                 </div>
                 <div className="max-w-lg space-y-3">
-                  <h2 className="text-xl font-semibold text-zinc-50 md:text-2xl">{service.title}</h2>
-                  <p className="max-w-md text-sm leading-6 text-zinc-400 md:text-[15px]">{service.text}</p>
+                  <h2 className="text-xl font-bold text-zinc-50 md:text-2xl uppercase font-mono tracking-tight">{service.title}</h2>
+                  <p className="max-w-md text-xs text-zinc-400 leading-relaxed font-mono">{service.text}</p>
                 </div>
               </div>
             </Link>
