@@ -38,13 +38,19 @@ const menuVariants: Variants = {
 };
 
 // Variantes para cada enlace individual
+import { usePathname } from "next/navigation";
+
 const itemVariants: Variants = {
   closed: { x: -16, opacity: 0 },
   open: { x: 0, opacity: 1 },
 };
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isShowroom = pathname?.startsWith("/ui-showroom");
   const [isOpen, setIsOpen] = useState(false);
+
+  if (isShowroom) return null;
 
   return (
     <header className="sticky top-0 z-50 border-b-2 border-white/10 bg-zinc-950/80 backdrop-blur-xl">

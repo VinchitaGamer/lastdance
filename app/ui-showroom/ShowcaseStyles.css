@@ -1,0 +1,481 @@
+/* ShowcaseStyles.css */
+
+/* Global font variables if needed, fallback to sans/mono */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&display=swap');
+
+/* --- 1. CLAYMORPHISM --- */
+.clay-card-dark {
+  background: rgba(44, 44, 50, 0.7);
+  border-radius: 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 6px 6px 12px rgba(255, 255, 255, 0.1),
+    inset -10px -10px 20px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+.clay-card-light {
+  background: rgba(243, 244, 246, 0.85);
+  border-radius: 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 20px 40px rgba(31, 41, 55, 0.1),
+    inset 6px 6px 12px rgba(255, 255, 255, 0.9),
+    inset -10px -10px 20px rgba(160, 174, 192, 0.25);
+  backdrop-filter: blur(10px);
+}
+.clay-btn-purple {
+  background: #a855f7;
+  color: #ffffff;
+  border-radius: 1.5rem;
+  border: none;
+  box-shadow: 
+    0 8px 16px rgba(168, 85, 247, 0.3),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.4),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-out;
+}
+.clay-btn-purple:hover {
+  background: #b56ff9;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 20px rgba(168, 85, 247, 0.4),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.5),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.15);
+}
+.clay-btn-purple:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 4px 8px rgba(168, 85, 247, 0.2),
+    inset 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.clay-btn-blue {
+  background: #3b82f6;
+  color: #ffffff;
+  border-radius: 1.5rem;
+  border: none;
+  box-shadow: 
+    0 8px 16px rgba(59, 130, 246, 0.3),
+    inset 4px 4px 8px rgba(255, 255, 255, 0.4),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-out;
+}
+.clay-btn-blue:hover {
+  background: #60a5fa;
+  transform: translateY(-2px);
+}
+.clay-input-dark {
+  background: rgba(15, 15, 18, 0.4);
+  border-radius: 1.25rem;
+  border: none;
+  box-shadow: 
+    inset 3px 3px 6px rgba(0, 0, 0, 0.5),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.05);
+}
+.clay-input-light {
+  background: rgba(229, 231, 235, 0.6);
+  border-radius: 1.25rem;
+  border: none;
+  box-shadow: 
+    inset 3px 3px 6px rgba(160, 174, 192, 0.3),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+}
+.clay-badge {
+  background: #f472b6;
+  color: #fff;
+  border-radius: 1rem;
+  box-shadow: 
+    0 4px 8px rgba(244, 114, 182, 0.25),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+/* --- 2. NEOMORPHISM --- */
+.neo-bg-dark {
+  background-color: #1e1e24 !important;
+}
+.neo-bg-light {
+  background-color: #e6e9f0 !important;
+}
+
+.neo-card-dark {
+  background-color: #1e1e24;
+  border-radius: 2rem;
+  box-shadow: 
+    10px 10px 22px #0f0f12,
+    -10px -10px 22px #2d2d36;
+}
+.neo-card-light {
+  background-color: #e6e9f0;
+  border-radius: 2rem;
+  box-shadow: 
+    8px 8px 18px #c2c5cc,
+    -8px -8px 18px #ffffff;
+}
+.neo-btn-dark {
+  background-color: #1e1e24;
+  box-shadow: 
+    6px 6px 12px #0f0f12,
+    -6px -6px 12px #2d2d36;
+  border-radius: 1.25rem;
+  transition: all 0.2s ease;
+}
+.neo-btn-dark:hover {
+  box-shadow: 
+    8px 8px 16px #0f0f12,
+    -8px -8px 16px #2d2d36;
+}
+.neo-btn-dark:active {
+  box-shadow: 
+    inset 4px 4px 8px #0f0f12,
+    inset -4px -4px 8px #2d2d36;
+}
+.neo-btn-light {
+  background-color: #e6e9f0;
+  box-shadow: 
+    5px 5px 10px #c2c5cc,
+    -5px -5px 10px #ffffff;
+  border-radius: 1.25rem;
+  transition: all 0.2s ease;
+}
+.neo-btn-light:hover {
+  box-shadow: 
+    7px 7px 14px #c2c5cc,
+    -7px -7px 14px #ffffff;
+}
+.neo-btn-light:active {
+  box-shadow: 
+    inset 3px 3px 6px #c2c5cc,
+    inset -3px -3px 6px #ffffff;
+}
+.neo-input-dark {
+  background-color: #17171c;
+  box-shadow: 
+    inset 4px 4px 8px #09090b,
+    inset -3px -3px 8px rgba(255, 255, 255, 0.02);
+  border-radius: 1rem;
+}
+.neo-input-light {
+  background-color: #dddfeb;
+  box-shadow: 
+    inset 3px 3px 6px #b8bac4,
+    inset -3px -3px 6px #ffffff;
+  border-radius: 1rem;
+}
+.neo-badge-dark {
+  background-color: #1e1e24;
+  box-shadow: 
+    inset 2px 2px 4px #0f0f12,
+    inset -2px -2px 4px #2d2d36;
+  border-radius: 0.75rem;
+}
+.neo-badge-light {
+  background-color: #e6e9f0;
+  box-shadow: 
+    inset 2px 2px 4px #c2c5cc,
+    inset -2px -2px 4px #ffffff;
+  border-radius: 0.75rem;
+}
+
+/* --- 3. GLASSMORPHISM --- */
+.glass-bg {
+  background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
+}
+.glass-card-dark {
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 41, 55, 0.06);
+}
+.glass-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+.glass-btn-light {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+.glass-btn-light:hover {
+  background: rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* --- 4. MINIMALIST --- */
+.min-font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+.min-font-sans {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: -0.02em;
+}
+.min-border-dark {
+  border: 1px solid #ffffff;
+}
+.min-border-light {
+  border: 1px solid #000000;
+}
+
+/* --- 5. MAXIMALIST --- */
+.max-bg-dark {
+  background-image: 
+    linear-gradient(rgba(244, 63, 94, 0.05) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(244, 63, 94, 0.05) 2px, transparent 2px);
+  background-size: 24px 24px;
+  background-color: #0b0f19;
+}
+.max-bg-light {
+  background-image: 
+    linear-gradient(rgba(14, 165, 233, 0.08) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.08) 2px, transparent 2px);
+  background-size: 24px 24px;
+  background-color: #fafaf9;
+}
+.max-card-dark {
+  background: #111827;
+  border: 4px dashed #ec4899;
+  transform: rotate(-0.5deg);
+  box-shadow: 12px 12px 0px #3b82f6;
+  border-radius: 20px;
+}
+.max-card-light {
+  background: #ffffff;
+  border: 4px dashed #f43f5e;
+  transform: rotate(0.5deg);
+  box-shadow: 12px 12px 0px #06b6d4;
+  border-radius: 20px;
+}
+.max-btn {
+  background: #facc15;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px #ff0055;
+  transform: skewX(-4deg);
+  transition: all 0.1s ease;
+}
+.max-btn:hover {
+  transform: skewX(-4deg) translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #ff0055;
+}
+.max-btn:active {
+  transform: skewX(-4deg) translate(2px, 2px);
+  box-shadow: 2px 2px 0px #ff0055;
+}
+
+/* --- 6. NEO-BRUTALISM --- */
+.brutal-card-dark {
+  background: #18181b;
+  border: 3px solid #ffffff;
+  box-shadow: 6px 6px 0px #facc15;
+  border-radius: 0px;
+}
+.brutal-card-light {
+  background: #ffffff;
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0px #3b82f6;
+  border-radius: 0px;
+}
+.brutal-btn-yellow {
+  background: #facc15;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 0px;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+}
+.brutal-btn-yellow:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+.brutal-btn-yellow:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #000000;
+}
+.brutal-btn-pink {
+  background: #f472b6;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 0px;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+}
+.brutal-btn-pink:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+.brutal-btn-white-dark {
+  background: #18181b;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: 4px 4px 0px #facc15;
+  border-radius: 0px;
+  transition: all 0.1s ease;
+}
+.brutal-btn-white-dark:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #facc15;
+}
+.brutal-btn-white-light {
+  background: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #3b82f6;
+  border-radius: 0px;
+  transition: all 0.1s ease;
+}
+.brutal-btn-white-light:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #3b82f6;
+}
+
+/* --- 7. PREMIUM SAAS ("LINEAR") --- */
+.saas-grid-dark {
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0),
+    linear-gradient(to bottom, #09090b, #121217);
+  background-size: 32px 32px, 100% 100%;
+}
+.saas-grid-light {
+  background-image: 
+    radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0),
+    linear-gradient(to bottom, #fafafa, #f1f2f6);
+  background-size: 32px 32px, 100% 100%;
+}
+.saas-card-dark {
+  background: rgba(18, 18, 24, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 40px rgba(139, 92, 246, 0.03);
+  border-radius: 0.75rem;
+}
+.saas-card-light {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(139, 92, 246, 0.01);
+  border-radius: 0.75rem;
+}
+.saas-glow-indigo {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+/* --- 8. CYBERPUNK / SCI-FI --- */
+.cyber-font {
+  font-family: 'Share Tech Mono', monospace;
+}
+.cyber-clip {
+  clip-path: polygon(
+    0px 0px, 
+    calc(100% - 16px) 0px, 
+    100% 16px, 
+    100% 100%, 
+    16px 100%, 
+    0px calc(100% - 16px)
+  );
+}
+.cyber-clip-sm {
+  clip-path: polygon(
+    0px 0px, 
+    calc(100% - 8px) 0px, 
+    100% 8px, 
+    100% 100%, 
+    8px 100%, 
+    0px calc(100% - 8px)
+  );
+}
+.cyber-card-dark {
+  background: #0d0e12;
+  border: 2px solid #00f0ff;
+  box-shadow: 
+    0 0 15px rgba(0, 240, 255, 0.15),
+    inset 0 0 10px rgba(0, 240, 255, 0.05);
+}
+.cyber-card-light {
+  background: #f4f6fa;
+  border: 2px solid #ff0055;
+  box-shadow: 
+    0 0 15px rgba(255, 0, 85, 0.1),
+    inset 0 0 10px rgba(255, 0, 85, 0.02);
+}
+.cyber-glow-cyan {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+}
+.cyber-glow-magenta {
+  text-shadow: 0 0 8px rgba(255, 0, 85, 0.6);
+}
+.cyber-btn-cyan {
+  background: transparent;
+  color: #00f0ff;
+  border: 1px solid #00f0ff;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+  transition: all 0.2s ease;
+}
+.cyber-btn-cyan:hover {
+  background: #00f0ff;
+  color: #000000;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+}
+.cyber-btn-magenta {
+  background: transparent;
+  color: #ff0055;
+  border: 1px solid #ff0055;
+  box-shadow: 0 0 8px rgba(255, 0, 85, 0.2);
+  transition: all 0.2s ease;
+}
+.cyber-btn-magenta:hover {
+  background: #ff0055;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+}
+
+/* Custom scrollbars for the preview window */
+.preview-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.preview-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.preview-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+.preview-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.preview-scroll-light::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+}
+.preview-scroll-light::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}

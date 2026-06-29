@@ -25,7 +25,14 @@ const casesNavigation = [
   { href: "/portafolio/software/paginas-web", label: "Páginas Web" },
 ];
 
+import { usePathname } from "next/navigation";
+
 export function Footer() {
+  const pathname = usePathname();
+  const isShowroom = pathname?.startsWith("/ui-showroom");
+  
+  if (isShowroom) return null;
+
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     navigation: false,
     services: false,

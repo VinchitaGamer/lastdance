@@ -17,10 +17,16 @@ const SUGGESTIONS = [
     "Ver demos de automatizaciones"
 ];
 
+import { usePathname } from "next/navigation";
+
 export default function ChatWidget() {
+    const pathname = usePathname();
+    const isShowroom = pathname?.startsWith("/ui-showroom");
     const [mounted, setMounted] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+
+    if (isShowroom) return null;
     const [messages, setMessages] = useState<ChatMessage[]>([
         { role: "assistant", text: "¡Hola! Soy SourBot, el asistente inteligente de SourDev. ¿En qué tipo de desarrollo web o automatización con agentes de IA estás interesado?" }
     ]);
