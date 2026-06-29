@@ -269,8 +269,12 @@ export default function ShowroomPage() {
             </div>
 
             {/* Mock page container */}
-            <div className="flex-1 overflow-y-auto preview-scroll relative">
-              <MockPreview activeStyle={activeStyle} colorMode={colorMode} />
+            <div className="flex-1 overflow-hidden relative">
+              <iframe 
+                src={`/ui-showroom/preview?style=${activeStyle}&mode=${colorMode}`}
+                className="w-full h-full border-none bg-transparent"
+                title="UI Showroom Preview"
+              />
             </div>
           </div>
 
