@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Bot, Code2, Zap } from "lucide-react";
 
 const services = [
   {
     title: "Desarrollo Web Flash",
+    slug: "desarrollo-web-flash",
     text: "Tu negocio en internet en tiempo récord, optimizado para vender.",
     icon: Code2,
     span: "md:col-span-2 md:row-span-2",
@@ -12,6 +14,7 @@ const services = [
   },
   {
     title: "Empleados IA (Chatbots)",
+    slug: "chatbots",
     text: "Atención al cliente 24/7. Un chatbot que conoce tu negocio a la perfección y responde por ti.",
     icon: Bot,
     span: "md:col-span-1",
@@ -20,6 +23,7 @@ const services = [
   },
   {
     title: "Automatización de Procesos",
+    slug: "automatizacion",
     text: "Eliminamos tareas repetitivas. Conectamos tus ventas, correos y facturación para que tú solo te dediques a dirigir.",
     icon: Zap,
     span: "md:col-span-1 md:translate-y-6",
@@ -44,8 +48,9 @@ export default function ServicesPage() {
 
         <section className="grid auto-rows-[minmax(190px,_1fr)] gap-3 md:grid-cols-3 md:grid-rows-2">
           {services.map((service, index) => (
-            <article
+            <Link
               key={service.title}
+              href={`/servicios/${service.slug}`}
               className={`group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-neutral-900 p-5 transition duration-300 hover:-translate-y-1 hover:border-yellow-400/30 hover:shadow-[0_0_0_1px_rgba(250,204,21,0.12),0_0_32px_rgba(250,204,21,0.12)] ${service.span}`}
             >
               <div className="absolute inset-0 opacity-95">
@@ -72,7 +77,7 @@ export default function ServicesPage() {
                   <p className="max-w-md text-sm leading-6 text-zinc-400 md:text-[15px]">{service.text}</p>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </section>
       </div>
