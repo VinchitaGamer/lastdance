@@ -1,128 +1,154 @@
 "use client";
 
-import Image from "next/image";
-import { Code2, Cpu, Network } from "lucide-react";
-import { motion } from "framer-motion";
+import { Cpu, GitBranch, FileCode, Terminal, CloudLightning } from "lucide-react";
+import { useState } from "react";
 
 const steps = [
   {
     number: "01",
-    title: "Orquestación IA",
-    subtitle: "Paso de entrada",
-    text: "Analizamos el alcance y coordinamos agentes para acelerar el arranque con precisión.",
-    detail: "Mapeamos objetivos, tareas y prioridades para convertir la idea en un flujo de trabajo claro.",
+    title: "Análisis del Prompt",
     icon: Cpu,
+    role: "Agente Analista",
+    description: "Desglosa los requisitos de negocio a partir de tu idea inicial, estructurando las prioridades de desarrollo en un backlog técnico claro.",
+    details: "Herramientas: AI Spec Parser, Backlog Structurer.",
+    output: "Backlog de desarrollo estructurado en 12 tareas prioritarias."
   },
   {
     number: "02",
-    title: "Supervisión Humana",
-    subtitle: "Control técnico",
-    text: "Revisamos arquitectura, seguridad y calidad para mantener control total sobre cada entrega.",
-    detail: "Validamos estructura, permisos y consistencia técnica antes de avanzar a producción.",
-    icon: Network,
+    title: "Modelado de Base de Datos",
+    icon: GitBranch,
+    role: "Agente Arquitecto",
+    description: "Diseña el esquema relacional de la base de datos SQL y genera los contratos OpenAPI para la comunicación de APIs de forma óptima.",
+    details: "Herramientas: PostgreSQL, Prisma ORM, OpenAPI Spec Builder.",
+    output: "Esquema relacional y contratos OpenAPI validados con cero redundancia."
   },
   {
     number: "03",
-    title: "Entrega Escalable",
-    subtitle: "Salida de producción",
-    text: "Publicamos una base sólida y preparada para crecer con rapidez, orden y consistencia.",
-    detail: "Dejamos una solución lista para iterar, medir y escalar sin romper la base técnica.",
-    icon: Code2,
+    title: "Escritura de Código",
+    icon: FileCode,
+    role: "Agente Codificador",
+    description: "Escribe de manera autónoma los componentes de interfaz reactivos en Next.js y los servicios backend integrando las APIs.",
+    details: "Herramientas: Next.js 14, Tailwind CSS, Stripe Payments SDK.",
+    output: "Componentes TSX y llamadas de API de checkout implementados."
   },
+  {
+    number: "04",
+    title: "Pruebas Automáticas",
+    icon: Terminal,
+    role: "Agente de Calidad (QA)",
+    description: "Corre lints y ejecuta suites de tests unitarios e integración para garantizar estabilidad y cobertura de código antes del lanzamiento.",
+    details: "Herramientas: Vitest, Jest Runner, ESLint, TypeScript Compiler.",
+    output: "100% de tests unitarios aprobados con cobertura de código de 98.2%."
+  },
+  {
+    number: "05",
+    title: "Despliegue & Monitoreo",
+    icon: CloudLightning,
+    role: "Agente DevOps",
+    description: "Compila el bundle de producción y despliega la aplicación de forma segura en la VPS, habilitando monitoreo de logs en tiempo real.",
+    details: "Herramientas: Docker, Nginx Reverse Proxy, VPS Cloud Hosting.",
+    output: "Contenedor Docker Swarm levantado y corriendo en producción."
+  }
 ];
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 32 },
-  show: { opacity: 1, y: 0 },
-};
-
 export default function MethodPage() {
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-zinc-950 px-4 py-20 text-zinc-50 sm:px-6 lg:px-8 lg:py-28">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 lg:hidden">
-          <Image
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-            alt="Fondo tecnológico vertical para móviles"
-            fill
-            priority
-            loading="eager"
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
-        <div className="absolute inset-0 hidden lg:block">
-          <Image
-            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80"
-            alt="Fondo tecnológico horizontal para escritorio"
-            fill
-            priority
-            loading="eager"
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.16),_transparent_26%),radial-gradient(circle_at_80%_20%,_rgba(255,255,255,0.08),_transparent_18%),linear-gradient(180deg,_rgba(10,10,10,0.55),_rgba(9,9,11,0.86))]" />
-      </div>
-
-      <div className="relative mx-auto w-full max-w-7xl">
+      {/* Background glow filters */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.14),_transparent_26%),radial-gradient(circle_at_80%_20%,_rgba(255,255,255,0.06),_transparent_18%),linear-gradient(180deg,_rgba(10,10,10,0.55),_rgba(9,9,11,0.86))]" />
+      
+      <div className="relative mx-auto w-full max-w-7xl space-y-16">
+        
+        {/* Intro Header Section (Original Texts) */}
         <section className="max-w-3xl space-y-6">
-          <p className="text-xs uppercase tracking-[0.4em] text-yellow-300">Método</p>
-          <h1 className="max-w-3xl text-5xl font-semibold leading-none text-balance sm:text-6xl lg:text-7xl">
+          <p className="text-xs uppercase tracking-[0.4em] text-yellow-300 font-mono">Método</p>
+          <h1 className="max-w-3xl text-4xl sm:text-5xl lg:text-7xl font-bold leading-none text-balance font-mono">
             Ingeniería Pura y Tecnología Avanzada.
           </h1>
-          <p className="max-w-2xl text-lg leading-8 text-zinc-300">
+          <p className="max-w-2xl text-base sm:text-lg leading-8 text-zinc-400">
             Orquestamos flujos de trabajo con agentes de IA de última generación, supervisados por ingeniería humana.
           </p>
         </section>
 
-        <section className="relative mt-14 grid gap-4 lg:mt-20">
-          <div className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-yellow-400/60 via-yellow-400/20 to-transparent sm:left-7" />
-
-          {steps.map((step, index) => (
-            <motion.article
-              key={step.title}
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.65 }}
-              transition={{ duration: 0.55, ease: "easeOut", delay: index * 0.12 }}
-              className={`relative grid gap-4 rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 pl-16 backdrop-blur-xl transition duration-300 hover:border-yellow-400/30 hover:shadow-[0_0_0_1px_rgba(250,204,21,0.08),0_0_36px_rgba(250,204,21,0.08)] sm:p-8 sm:pl-20 ${
-                index === 1 ? "md:translate-x-6" : index === 2 ? "md:translate-x-10" : ""
-              }`}
-            >
-              <div className="absolute left-4 top-6 flex h-8 w-8 items-center justify-center rounded-full border border-yellow-400/30 bg-zinc-950/90 text-yellow-300 shadow-[0_0_18px_rgba(250,204,21,0.28)] sm:left-5 sm:h-9 sm:w-9">
-                <step.icon className="h-4 w-4 drop-shadow-[0_0_14px_rgba(250,204,21,0.65)] sm:h-5 sm:w-5" />
-              </div>
-
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="space-y-2">
-                  <p className="font-mono text-sm uppercase tracking-[0.45em] text-yellow-300">
-                    Paso {step.number}
-                  </p>
-                  <h2 className="font-mono text-2xl font-semibold tracking-[0.18em] text-zinc-50 sm:text-3xl">
-                    {step.subtitle}
-                  </h2>
+        {/* Interactive Simulation Grid */}
+        <section className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
+          
+          {/* Left Column: Timeline Steps */}
+          <div className="space-y-4">
+            {steps.map((step, idx) => (
+              <button
+                key={step.number}
+                onClick={() => setActiveStep(idx)}
+                className={`w-full text-left p-5 rounded-2xl border-2 transition-all duration-300 flex items-start gap-4 ${
+                  activeStep === idx
+                    ? "border-yellow-400 bg-zinc-950/80 shadow-[4px_4px_0px_0px_rgba(250,204,21,1)] text-white"
+                    : "border-zinc-800 bg-zinc-950/30 text-zinc-400 md:hover:border-zinc-700 md:hover:bg-zinc-950/50"
+                }`}
+              >
+                <div className={`p-2.5 rounded-xl border-2 transition-all ${
+                  activeStep === idx
+                    ? "border-yellow-400 bg-yellow-400/10 text-yellow-300"
+                    : "border-zinc-800 bg-zinc-900 text-zinc-500"
+                }`}>
+                  <step.icon className="h-5 w-5" />
                 </div>
-                <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-xs uppercase tracking-[0.3em] text-zinc-400">
-                  0{index + 1}
+                <div className="space-y-1 flex-1">
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] font-mono tracking-widest text-zinc-500 font-bold">FASE {step.number}</span>
+                    <span className="text-[10px] font-mono bg-zinc-900 border border-zinc-805 px-2 py-0.5 rounded text-zinc-400">{step.role}</span>
+                  </div>
+                  <h3 className="text-base font-bold font-mono uppercase tracking-tight">{step.title}</h3>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Right Column: Cyberpunk Glass Terminal Preview */}
+          <div className="rounded-2xl border-2 border-zinc-850 bg-zinc-950/60 p-6 backdrop-blur-xl shadow-[4px_4px_0px_0px_rgba(250,204,21,0.05)] flex flex-col justify-between min-h-[380px] lg:min-h-full">
+            <div className="space-y-6">
+              
+              {/* Terminal Header */}
+              <div className="flex items-center justify-between border-b border-zinc-900 pb-4">
+                <div className="flex items-center gap-1.5 font-mono text-[11px] text-zinc-500">
+                  <span className="h-2.5 w-2.5 rounded-full bg-zinc-800" />
+                  <span>workflow_simulation.sh</span>
+                </div>
+                <span className="text-[10px] font-mono bg-yellow-400/10 text-yellow-300 border border-yellow-400/30 px-2.5 py-0.5 rounded-full">
+                  Status: Active
                 </span>
               </div>
 
-              <div className="grid gap-3 lg:grid-cols-[1fr_1.2fr] lg:items-start lg:gap-8">
-                <p className="max-w-md text-sm leading-7 text-zinc-300 sm:text-base">
-                  {step.text}
+              {/* Ficha Content */}
+              <div className="space-y-4">
+                <h4 className="text-xl font-bold font-mono uppercase tracking-tight text-white flex items-center gap-2">
+                  <span className="text-yellow-300 font-mono">/</span> {steps[activeStep].title}
+                </h4>
+                <p className="text-xs text-zinc-400 leading-relaxed font-mono">
+                  {steps[activeStep].description}
                 </p>
-                <div className="rounded-2xl border border-white/10 bg-zinc-950/60 p-4">
-                  <p className="font-mono text-xs uppercase tracking-[0.35em] text-zinc-500">Detalle</p>
-                  <p className="mt-3 text-sm leading-6 text-zinc-300">
-                    {step.detail}
+                <div className="border-l-2 border-yellow-400/30 pl-4 py-1.5 space-y-2 bg-zinc-900/20 rounded-r-lg">
+                  <p className="text-[11px] font-mono text-zinc-500">
+                    <span className="text-yellow-300">⚙</span> {steps[activeStep].details}
                   </p>
                 </div>
               </div>
-            </motion.article>
-          ))}
+
+            </div>
+
+            {/* Console Output (Realist / Minimalist) */}
+            <div className="mt-8 border-2 border-zinc-900 bg-zinc-950/80 p-4 rounded-xl space-y-2">
+              <span className="text-[9px] font-mono uppercase tracking-widest text-zinc-500 block">Console Output:</span>
+              <p className="text-xs font-mono text-emerald-400 flex items-center gap-2">
+                <span className="text-[10px] text-zinc-600 font-bold">$</span> {steps[activeStep].output}
+              </p>
+            </div>
+
+          </div>
+
         </section>
+
       </div>
     </main>
   );
