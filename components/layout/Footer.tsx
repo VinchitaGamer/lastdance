@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 const mainNavigation = [
   { href: "/", label: "Inicio" },
@@ -22,15 +26,28 @@ const casesNavigation = [
 ];
 
 export function Footer() {
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    navigation: false,
+    services: false,
+    cases: false,
+  });
+
+  const toggleSection = (key: string) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
   return (
     <footer className="border-t-2 border-white/10 bg-zinc-950/60 backdrop-blur-xl">
       <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
         
         {/* Grid Container */}
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 lg:gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           
-          {/* Brand Info - spans 2 columns in mobile to stay balanced */}
-          <div className="col-span-2 sm:col-span-3 lg:col-span-1 flex flex-col gap-3">
+          {/* Brand Info */}
+          <div className="flex flex-col gap-3 sm:col-span-2 lg:col-span-1">
             <span className="font-mono text-lg font-bold tracking-[0.24em] text-zinc-50">
               SOURDEV
             </span>
@@ -40,59 +57,107 @@ export function Footer() {
           </div>
 
           {/* Column 1: Navegación */}
-          <div className="space-y-3">
-            <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-yellow-300">
-              Navegación
-            </span>
-            <ul className="space-y-1.5">
-              {mainNavigation.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="font-mono text-[11px] text-zinc-400 transition hover:text-yellow-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+          <div className="border-b border-zinc-900 pb-4 sm:border-0 sm:pb-0">
+            <button
+              onClick={() => toggleSection("navigation")}
+              className="w-full flex justify-between items-center text-left focus:outline-none sm:pointer-events-none"
+            >
+              <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-yellow-300">
+                Navegación
+              </span>
+              <ChevronDown
+                className={`h-4.5 w-4.5 text-yellow-300 transition-transform duration-300 sm:hidden ${
+                  openSections.navigation ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <ul
+              className={`transition-all duration-300 overflow-hidden sm:max-h-none sm:opacity-100 sm:block ${
+                openSections.navigation ? "max-h-48 opacity-100 mt-3" : "max-h-0 opacity-0 sm:mt-0"
+              }`}
+            >
+              <div className="space-y-1.5 pt-2 sm:pt-0">
+                {mainNavigation.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="font-mono text-[11px] text-zinc-400 transition hover:text-yellow-300"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </div>
             </ul>
           </div>
 
           {/* Column 2: Servicios */}
-          <div className="space-y-3">
-            <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-yellow-300">
-              Servicios
-            </span>
-            <ul className="space-y-1.5">
-              {servicesNavigation.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="font-mono text-[11px] text-zinc-400 transition hover:text-yellow-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+          <div className="border-b border-zinc-900 pb-4 sm:border-0 sm:pb-0">
+            <button
+              onClick={() => toggleSection("services")}
+              className="w-full flex justify-between items-center text-left focus:outline-none sm:pointer-events-none"
+            >
+              <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-yellow-300">
+                Servicios
+              </span>
+              <ChevronDown
+                className={`h-4.5 w-4.5 text-yellow-300 transition-transform duration-300 sm:hidden ${
+                  openSections.services ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <ul
+              className={`transition-all duration-300 overflow-hidden sm:max-h-none sm:opacity-100 sm:block ${
+                openSections.services ? "max-h-48 opacity-100 mt-3" : "max-h-0 opacity-0 sm:mt-0"
+              }`}
+            >
+              <div className="space-y-1.5 pt-2 sm:pt-0">
+                {servicesNavigation.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="font-mono text-[11px] text-zinc-400 transition hover:text-yellow-300"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </div>
             </ul>
           </div>
 
           {/* Column 3: Casos de Estudio */}
-          <div className="space-y-3">
-            <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-yellow-300">
-              Casos
-            </span>
-            <ul className="space-y-1.5">
-              {casesNavigation.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="font-mono text-[11px] text-zinc-400 transition hover:text-yellow-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+          <div className="border-b border-zinc-900 pb-4 sm:border-0 sm:pb-0">
+            <button
+              onClick={() => toggleSection("cases")}
+              className="w-full flex justify-between items-center text-left focus:outline-none sm:pointer-events-none"
+            >
+              <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-yellow-300">
+                Casos
+              </span>
+              <ChevronDown
+                className={`h-4.5 w-4.5 text-yellow-300 transition-transform duration-300 sm:hidden ${
+                  openSections.cases ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <ul
+              className={`transition-all duration-300 overflow-hidden sm:max-h-none sm:opacity-100 sm:block ${
+                openSections.cases ? "max-h-48 opacity-100 mt-3" : "max-h-0 opacity-0 sm:mt-0"
+              }`}
+            >
+              <div className="space-y-1.5 pt-2 sm:pt-0">
+                {casesNavigation.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="font-mono text-[11px] text-zinc-400 transition hover:text-yellow-300"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </div>
             </ul>
           </div>
 
