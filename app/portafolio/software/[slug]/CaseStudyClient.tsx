@@ -292,6 +292,27 @@ const webCases = [
       { label: "Pérdida de Información", value: "0%", desc: "Bases de datos centralizadas en la nube con backups diarios." },
       { label: "Tiempo de Adopción", value: "< 2 días", desc: "Plataforma intuitiva y fácil de usar por el personal." }
     ]
+  },
+  {
+    id: "arquitectura",
+    title: "Estudio Cota Cero",
+    subtitle: "Portafolio de Arquitectura Autogestionable (Brutalismo)",
+    description: "Webapp corporativa con panel de administración privado y base de datos SQLite para gestionar el catálogo de obras arquitectónicas con una estética brutalista de alto nivel.",
+    icon: "LayoutGrid",
+    problem: "El estudio de arquitectura dependía de programadores y agencias externas cada vez que quería actualizar su catálogo de proyectos o cambiar descripciones, retrasando meses la publicación de sus obras más recientes.",
+    solution: "Diseñamos un portafolio de marca premium con base de datos local y panel privado autogestionable. El arquitecto puede agregar, editar o eliminar obras y detalles técnicos en menos de 5 minutos sin programar.",
+    tools: ["Next.js", "Prisma ORM", "SQLite", "Tailwind CSS", "Netlify"],
+    flow: [
+      { step: "1", title: "Publicación en Panel", desc: "El administrador crea o edita una obra con su información técnica e imagen en el panel privado." },
+      { step: "2", title: "Persistencia e Instantaneidad", desc: "SQLite registra los datos y Next.js ejecuta Server Actions para revalidar la landing en milisegundos." },
+      { step: "3", title: "Renderizado Bento", desc: "La landing organiza automáticamente la obra dentro de una bento grid asimétrica de alta estética brutalista." },
+      { step: "4", title: "Conversión y Reserva", desc: "El cliente visualiza las obras en su móvil y agenda una cita directamente con el arquitecto desde la web." }
+    ],
+    roi: [
+      { label: "Gestión de Obras", value: "Autónoma", desc: "Actualización sin depender de terceros." },
+      { label: "Tiempo de Carga", value: "< 1.2s", desc: "Rendimiento óptimo para dispositivos móviles." },
+      { label: "Tiempo de Publicación", value: "5 min", desc: "Antes requería coordinar días con la agencia." }
+    ]
   }
 ];
 
@@ -381,6 +402,14 @@ const webPreviewCards = {
     progressBar: 75,
     buttonText: "Ver Reporte Completo",
     isDashboard: true,
+  },
+  arquitectura: {
+    badge: "Estudio Cota Cero",
+    title: "La luz esculpe el espacio.",
+    subtitle: "Buscamos la pureza en el brutalismo minimalista, donde la masa de hormigón revela el espíritu del lugar.",
+    buttonText: "Ver Proyecto en Vivo",
+    hasInput: false,
+    demoUrl: "https://arquitectura.sourdev.app",
   }
 };
 
@@ -725,7 +754,9 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
               </div>
 
               {/* Bento-style Tab Selectors - Horizontal Swipeable on Mobile */}
-              <div className="flex overflow-x-auto gap-3 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-4 lg:gap-4 lg:pb-0">
+              <div className={`flex overflow-x-auto gap-3 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:gap-4 lg:pb-0 ${
+                cases.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4"
+              }`}>
                 {cases.map((item) => {
                   const IconComponent = getIconComponent(item.icon);
                   const isActive = activeTab === item.id;
@@ -920,13 +951,25 @@ export default function CaseStudyClient({ slug, caseData }: CaseStudyClientProps
                                 )}
 
                                 <div className="pt-2">
-                                  <button
-                                    type="button"
-                                    className={`w-full py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider transition duration-300 flex items-center justify-center gap-2 ${uiStyles[activeUiStyle].css.button}`}
-                                  >
-                                    {cardContent.buttonText}
-                                    <ArrowRight className="h-4 w-4" />
-                                  </button>
+                                  {cardContent.demoUrl ? (
+                                    <a
+                                      href={cardContent.demoUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className={`w-full py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider transition duration-300 flex items-center justify-center gap-2 ${uiStyles[activeUiStyle].css.button}`}
+                                    >
+                                      {cardContent.buttonText}
+                                      <ArrowRight className="h-4 w-4 animate-pulse" />
+                                    </a>
+                                  ) : (
+                                    <button
+                                      type="button"
+                                      className={`w-full py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider transition duration-300 flex items-center justify-center gap-2 ${uiStyles[activeUiStyle].css.button}`}
+                                    >
+                                      {cardContent.buttonText}
+                                      <ArrowRight className="h-4 w-4" />
+                                    </button>
+                                  )}
                                 </div>
                               </div>
                             );
