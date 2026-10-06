@@ -18,6 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SOURDEV - Desarrollo de Software y Automatización con Agentic Workflows",
   description: "Agencia de software especializada en desarrollo web ultra rápido y agentes autónomos de IA. Transformamos tu operación diaria en un flujo automatizado.",
+  verification: {
+    other: {
+      "facebook-domain-verification": ["xn25ectqlz87ck83ana1otp6ev2zgc"],
+    },
+  },
 };
 
 export default function RootLayout({
